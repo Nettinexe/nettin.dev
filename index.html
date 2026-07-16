@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nettin.dev — Landing Pages de Alta Performance com Automação e IA</title>
+<meta name="description" content="Landing pages ultra-velozes sob medida, otimizadas para anúncios e integradas a automações inteligentes em Python e IA. Transforme visitantes em clientes.">
+
+<!--
+  ═══════════════════════════════════════════════════════════════
+  nettin.dev — LANDING PAGE
+  ───────────────────────────────────────────────────────────────
+  ONDE EDITAR:
+  1. CONTATOS (WhatsApp, e-mail)  → objeto CONFIG no <script> final
+  2. PREÇOS dos planos            → procure por "EDITE O PREÇO"
+  3. SUA FOTO                     → arquivo perfil.png (mesma pasta)
+  4. PRINTS dos seus projetos     → pasta /prints (print-01.png até
+     print-06.png). Se um print não existir, o card mostra um
+     placeholder automaticamente.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════ TOKENS DE DESIGN ═══════════════ */
+:root{
+  --ink:        #04070D;              /* fundo geral */
+  --panel:      #0A101E;              /* cards */
+  --panel-2:    #0D1526;              /* cards hover / destaque */
+  --line:       #1B2540;              /* bordas */
+  --line-soft:  rgba(126,166,255,.14);
+  --blue:       #3E6FF4;              /* ação */
+  --blue-hover: #5583FF;
+  --blue-soft:  #8FB0FF;              /* títulos em azul claro */
+  --glow:       rgba(62,111,244,.38);
+  --text:       #E9EFFF;
+  --muted:      #97A3C4;
+  --ok:         #37D399;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+/* ═══════════════ BASE ═══════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--ink);
+  color:var(--text);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--blue-soft);text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+
+.container{width:min(1140px,92%);margin-inline:auto}
+.section{padding:104px 0}
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+
+/* rótulo de seção */
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px;border:1px solid var(--line);border-radius:99px;
+  background:rgba(62,111,244,.06);color:var(--blue-soft);
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue)}
+
+.section-head{max-width:640px;margin-bottom:56px}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-top:18px}
+.section-head h2 em{font-style:normal;color:var(--blue-soft)}
+.section-head p{color:var(--muted);margin-top:14px}
+.center{text-align:center;margin-inline:auto}
+
+/* botões */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-display);font-weight:600;font-size:.95rem;
+  padding:14px 26px;border-radius:99px;border:1px solid transparent;
+  cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--blue-hover),var(--blue));
+  color:#fff;box-shadow:0 8px 28px var(--glow);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px var(--glow)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue-soft)}
+.btn svg{flex:none}
+
+/* animação de entrada */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.001s !important;animation-iteration-count:1 !important}
+}
+
+/* ═══════════════ NAVBAR ═══════════════ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background .3s,border-color .3s;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{background:rgba(4,7,13,.85);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:#fff;letter-spacing:-.02em}
+.brand span{color:var(--blue-soft)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav .btn{padding:10px 20px;font-size:.85rem}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{position:relative;padding:170px 0 80px;overflow:hidden}
+.hero::before{ /* glow ambiente */
+  content:"";position:absolute;top:-220px;right:-140px;width:820px;height:820px;
+  background:radial-gradient(circle,rgba(62,111,244,.22) 0%,transparent 62%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);margin:22px 0 20px}
+.hero h1 .grad{
+  background:linear-gradient(92deg,var(--blue-hover),#7EA6FF 60%,#B7CCFF);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.sub{color:var(--muted);font-size:1.06rem;max-width:520px}
+.hero p.sub strong{color:var(--text);font-weight:600}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin:32px 0 36px}
+.hero-checks{display:flex;flex-wrap:wrap;gap:10px 26px;list-style:none}
+.hero-checks li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.85rem}
+.hero-checks svg{color:var(--ok);flex:none}
+
+/* retrato com glow + chips flutuantes */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.portrait{
+  position:relative;width:min(400px,88%);border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 0 0 1px rgba(126,166,255,.06),0 30px 80px rgba(0,0,0,.55),0 0 120px var(--glow);
+}
+.portrait img{width:100%;height:auto}
+.portrait::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(4,7,13,.9));
+}
+.chip{
+  position:absolute;z-index:2;display:flex;align-items:center;gap:8px;
+  padding:9px 15px;border-radius:12px;
+  background:rgba(10,16,30,.82);border:1px solid var(--line-soft);
+  backdrop-filter:blur(8px);
+  font-family:var(--font-mono);font-size:.74rem;font-weight:500;color:var(--text);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  animation:flutua 6s ease-in-out infinite;
+}
+.chip b{color:var(--blue-soft);font-weight:700}
+.chip.c1{top:9%;left:-4%;animation-delay:0s}
+.chip.c2{top:26%;right:-6%;animation-delay:1.2s}
+.chip.c3{top:56%;left:-8%;animation-delay:2.1s}
+.chip.c4{bottom:16%;right:-4%;animation-delay:3s}
+@keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+@media(max-width:940px){
+  .hero{padding-top:130px}
+  .hero-grid{grid-template-columns:1fr;gap:64px}
+  .hero-visual{order:-1}
+  .chip.c1{left:2%}.chip.c3{left:0}
+  .chip.c2{right:2%}.chip.c4{right:2%}
+}
+
+/* ═══════════════ MOCKUP NOTEBOOK + CELULAR (apoio do hero) ═══════════════ */
+.devices{position:relative;margin-top:70px;display:flex;justify-content:center;align-items:flex-end;gap:0}
+.laptop{width:min(760px,100%);filter:drop-shadow(0 40px 70px rgba(0,0,0,.6))}
+.laptop-screen{
+  border:2px solid #232B44;border-bottom:none;border-radius:16px 16px 0 0;
+  background:#070B14;padding:12px 12px 0;
+}
+.laptop-base{height:16px;background:linear-gradient(180deg,#1B2338,#0D1220);border-radius:0 0 14px 14px;border:1px solid #232B44;border-top:none}
+.phone{
+  width:150px;margin-left:-90px;position:relative;z-index:2;
+  border:2px solid #232B44;border-radius:24px;background:#070B14;padding:8px;
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.65));
+}
+/* mini interface fake (esqueleto) desenhada em CSS */
+.fake{border-radius:8px;overflow:hidden;background:#0A101E}
+.fake-bar{display:flex;gap:5px;padding:8px 10px;border-bottom:1px solid var(--line)}
+.fake-bar i{width:8px;height:8px;border-radius:50%;background:#28324F}
+.fake-bar i:first-child{background:var(--blue)}
+.fake-body{padding:18px}
+.sk{border-radius:6px;background:linear-gradient(90deg,#131B31,#1B2540,#131B31);background-size:200% 100%;animation:shimmer 2.6s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+.sk.h1{height:16px;width:58%;margin-bottom:10px}
+.sk.h2{height:10px;width:82%;margin-bottom:6px}
+.sk.h3{height:10px;width:66%;margin-bottom:16px}
+.sk.btnk{height:26px;width:120px;border-radius:99px;background:linear-gradient(90deg,#2B4FB8,#3E6FF4,#2B4FB8);background-size:200% 100%}
+.fake-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.fake-cards .sk{height:56px}
+.phone .fake-body{padding:12px}
+.phone .sk.h1{width:80%}
+.phone .fake-cards{grid-template-columns:1fr;gap:8px}
+.phone .fake-cards .sk{height:34px}
+@media(max-width:640px){.phone{display:none}}
+
+/* faixa de prova (números) */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px}
+.proof div{border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px 20px;background:rgba(255,255,255,.015)}
+.proof b{font-family:var(--font-display);font-size:1.35rem;color:var(--blue-soft);display:block}
+.proof span{color:var(--muted);font-size:.8rem}
+@media(max-width:860px){.proof{grid-template-columns:repeat(2,1fr)}}
+
+/* ═══════════════ DIFERENCIAIS ═══════════════ */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1020px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid-4{grid-template-columns:1fr}}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;transition:transform .3s var(--ease),border-color .3s,background .3s;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(62,111,244,.5);background:var(--panel-2)}
+.icon-box{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:20px;
+  background:linear-gradient(135deg,rgba(62,111,244,.28),rgba(62,111,244,.08));
+  border:1px solid rgba(126,166,255,.25);color:var(--blue-soft);
+}
+.card h3{font-size:1.05rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.9rem}
+
+/* ═══════════════ VITRINE / PORTFÓLIO ═══════════════ */
+.vitrine{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:900px){.vitrine{grid-template-columns:1fr}}
+.show{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;transition:border-color .3s;
+}
+.show:hover{border-color:rgba(62,111,244,.5)}
+.show .mono{color:var(--blue-soft);display:block;margin-bottom:14px}
+/* moldura de navegador */
+.browser{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#070B14}
+.browser-top{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:#0A101E}
+.browser-top i{width:8px;height:8px;border-radius:50%;background:#28324F}
+.browser-top .url{
+  margin-left:10px;flex:1;font-family:var(--font-mono);font-size:.62rem;color:var(--muted);
+  background:#101830;border-radius:5px;padding:3px 10px;letter-spacing:.04em;
+}
+.browser-body{aspect-ratio:16/10.5;position:relative}
+
+/* mini-LP saúde (clean/clara) */
+.demo-saude{background:#F7F5F2;height:100%;padding:16px;display:flex;flex-direction:column;gap:10px}
+.demo-saude .top{display:flex;justify-content:space-between;align-items:center}
+.demo-saude .logo{width:70px;height:9px;border-radius:99px;background:#0E7C66}
+.demo-saude .navpts{display:flex;gap:6px}
+.demo-saude .navpts i{width:26px;height:6px;border-radius:99px;background:#DDD8D0}
+.demo-saude .h{width:62%;height:13px;border-radius:99px;background:#20342E;margin-top:12px}
+.demo-saude .h2{width:44%;height:13px;border-radius:99px;background:#20342E}
+.demo-saude .t{width:78%;height:7px;border-radius:99px;background:#C9C2B8;margin-top:6px}
+.demo-saude .cta{width:110px;height:22px;border-radius:99px;background:#0E7C66;margin-top:12px}
+.demo-saude .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:auto}
+.demo-saude .cards i{height:44px;border-radius:8px;background:#fff;border:1px solid #E4DED5}
+
+/* mini-LP advocacia (escura/elegante) */
+.demo-adv{background:#14100C;height:100%;padding:16px;display:flex;flex-direction:column}
+.demo-adv .top{display:flex;justify-content:space-between;align-items:center}
+.demo-adv .logo{width:64px;height:9px;background:#B08D57}
+.demo-adv .navpts{display:flex;gap:6px}
+.demo-adv .navpts i{width:24px;height:5px;background:#3A2F24}
+.demo-adv .rule{width:34px;height:2px;background:#B08D57;margin:16px 0 10px}
+.demo-adv .h{width:70%;height:12px;background:#EFE6D8}
+.demo-adv .h2{width:52%;height:12px;background:#EFE6D8;margin-top:6px}
+.demo-adv .t{width:64%;height:6px;background:#4A3D2E;margin-top:10px}
+.demo-adv .cta{width:120px;height:22px;border:1px solid #B08D57;margin-top:14px}
+.demo-adv .cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.demo-adv .cols i{height:38px;background:#1D1710;border:1px solid #2C2318}
+
+.show h3{margin:18px 0 6px;font-size:1.05rem}
+.show>p{color:var(--muted);font-size:.88rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;
+  padding:6px 12px;border-radius:99px;border:1px solid var(--line);color:var(--muted);
+}
+.badge.ok{color:var(--ok);border-color:rgba(55,211,153,.35)}
+.badge.blue{color:var(--blue-soft);border-color:rgba(126,166,255,.35)}
+
+/* ═══════════════ PLANOS ═══════════════ */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+@media(max-width:940px){.plans{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+.plan{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 28px;display:flex;flex-direction:column;position:relative;
+  transition:transform .3s var(--ease),border-color .3s;
+}
+.plan:hover{transform:translateY(-5px)}
+.plan.hot{border-color:var(--blue);background:linear-gradient(180deg,rgba(62,111,244,.10),var(--panel) 45%);box-shadow:0 20px 60px rgba(62,111,244,.18)}
+.plan .flag{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;font-family:var(--font-mono);font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:99px;white-space:nowrap;
+}
+.plan .mono{color:var(--blue-soft)}
+.plan h3{font-size:1.3rem;margin:8px 0 4px}
+.plan .desc{color:var(--muted);font-size:.86rem;min-height:44px}
+.price{font-family:var(--font-display);font-size:2.1rem;font-weight:700;margin:18px 0 2px}
+.price small{font-size:.85rem;color:var(--muted);font-family:var(--font-body);font-weight:400}
+.price-note{font-size:.74rem;color:var(--muted);margin-bottom:20px}
+.plan ul{list-style:none;display:grid;gap:11px;margin:6px 0 28px}
+.plan li{display:flex;gap:10px;font-size:.87rem;color:var(--muted);align-items:flex-start}
+.plan li svg{color:var(--ok);flex:none;margin-top:3px}
+.plan li strong{color:var(--text);font-weight:600}
+.plan .btn{margin-top:auto;width:100%}
+
+/* ═══════════════ FAQ ═══════════════ */
+.faq{max-width:760px;margin-inline:auto;display:grid;gap:14px}
+.faq details{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-sm);
+  overflow:hidden;transition:border-color .3s;
+}
+.faq details[open]{border-color:rgba(62,111,244,.5)}
+.faq summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:20px 24px;font-family:var(--font-display);font-weight:600;font-size:.98rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";font-size:1.3rem;color:var(--blue-soft);flex:none;
+  transition:transform .3s var(--ease);line-height:1;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 24px 22px;color:var(--muted);font-size:.9rem}
+
+/* ═══════════════ FORMULÁRIO + AUTOMAÇÃO ═══════════════ */
+.auto-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:900px){.auto-grid{grid-template-columns:1fr}}
+.form-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:8px}
+.field input,.field select{
+  width:100%;padding:13px 16px;border-radius:var(--radius-sm);
+  background:#070B14;border:1px solid var(--line);color:var(--text);
+  font-family:var(--font-body);font-size:.92rem;transition:border-color .2s;
+}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue)}
+.field input::placeholder{color:#556084}
+
+/* terminal da automação (elemento-assinatura) */
+.pipeline{
+  margin-top:22px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:#060A12;font-family:var(--font-mono);font-size:.74rem;
+  overflow:hidden;display:none;
+}
+.pipeline.on{display:block}
+.pipe-top{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+.pipe-top::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.pipe-body{padding:14px 16px;display:grid;gap:8px}
+.pipe-line{display:flex;gap:10px;opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
+.pipe-line.go{opacity:1;transform:none}
+.pipe-line .t{color:#556084;flex:none}
+.pipe-line .ok{color:var(--ok)}
+.pipe-line .b{color:var(--blue-soft)}
+
+/* ═══════════════ GALERIA DE PRINTS ═══════════════ */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:940px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}}
+.print{transition:transform .3s var(--ease)}
+.print:hover{transform:translateY(-5px)}
+.print .browser-body{aspect-ratio:16/10;background:#0A101E}
+.print img{width:100%;height:100%;object-fit:cover;object-position:top}
+.print figcaption{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 4px 0;font-size:.82rem;color:var(--muted);
+}
+.print figcaption b{color:var(--text);font-weight:600;font-family:var(--font-display)}
+/* placeholder automático quando o print não existe */
+.print.vazio img{display:none}
+.print.vazio .browser-body::after{
+  content:"Adicione seu print em /prints";
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:.68rem;color:#556084;letter-spacing:.08em;
+  background:
+    linear-gradient(135deg,rgba(62,111,244,.06),transparent 60%),
+    repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.015) 14px 28px);
+}
+
+/* ═══════════════ CTA FINAL ═══════════════ */
+.cta-bar{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(120deg,rgba(62,111,244,.16),var(--panel) 60%);
+  padding:44px 46px;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+}
+.cta-bar h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.cta-bar p{color:var(--muted);margin-top:6px;font-size:.92rem}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer{border-top:1px solid var(--line);padding:64px 0 34px;background:#03050A}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:30px}}
+.foot-grid p{color:var(--muted);font-size:.86rem;margin-top:12px;max-width:300px}
+.foot-grid h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text);margin-bottom:16px;font-family:var(--font-mono);font-weight:500}
+.foot-grid ul{list-style:none;display:grid;gap:10px}
+.foot-grid ul a{color:var(--muted);font-size:.88rem;transition:color .2s}
+.foot-grid ul a:hover{color:var(--blue-soft)}
+.copy{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#556084;font-size:.78rem}
+.copy .mono{font-size:.66rem}
+
+/* botão flutuante do WhatsApp */
+.wa-float{
+  position:fixed;right:22px;bottom:22px;z-index:60;
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  background:#25D366;color:#fff;box-shadow:0 12px 34px rgba(37,211,102,.4);
+  transition:transform .25s var(--ease);
+}
+.wa-float:hover{transform:scale(1.08)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio">nettin<span>.dev</span></a>
+    <ul class="nav-links">
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+    </ul>
+    <a class="btn btn-primary js-wa" href="#" data-msg="Olá! Quero solicitar um orçamento de landing page.">Solicitar orçamento</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ 1. HERO ═══════════════ -->
+<header class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="tag">Landing pages · Automação · IA</span>
+        <h1>Landing pages de alta performance que transformam <span class="grad">visitantes em clientes.</span></h1>
+        <p class="sub">Páginas <strong>ultra-velozes sob medida</strong>, otimizadas para anúncios e integradas a <strong>automações inteligentes de IA</strong> que entregam cada lead direto no seu WhatsApp — em tempo real.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary js-wa" href="#" data-msg="Olá! Quero solicitar um orçamento gratuito de landing page.">
+            Solicitar orçamento gratuito
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#planos">Ver planos</a>
+        </div>
+        <ul class="hero-checks">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Carregamento até 3x mais rápido</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Leads em tempo real no WhatsApp</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 100% responsivo</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal">
+        <figure class="portrait">
+          <!-- SUA FOTO: substitua perfil.png (mesma pasta do index.html) -->
+          <img src="perfil.png" alt="nettin.dev — desenvolvedor de landing pages e automações" width="864" height="1184">
+        </figure>
+        <span class="chip c1"><b>&lt;/&gt;</b> HTML · CSS · JS</span>
+        <span class="chip c2"><b>⚡</b> Bootstrap 5</span>
+        <span class="chip c3"><b>🐍</b> Python · Automação</span>
+        <span class="chip c4"><b>✦</b> IA aplicada</span>
+      </div>
+    </div>
+
+    <!-- Mockup notebook + smartphone -->
+    <div class="devices reveal" aria-hidden="true">
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="fake">
+            <div class="fake-bar"><i></i><i></i><i></i></div>
+            <div class="fake-body">
+              <div class="sk h1"></div>
+              <div class="sk h2"></div>
+              <div class="sk h3"></div>
+              <div class="sk btnk"></div>
+              <div class="fake-cards"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="laptop-base"></div>
+      </div>
+      <div class="phone">
+        <div class="fake">
+          <div class="fake-bar"><i></i><i></i></div>
+          <div class="fake-body">
+            <div class="sk h1"></div>
+            <div class="sk h2"></div>
+            <div class="sk btnk" style="width:80px;height:20px"></div>
+            <div class="fake-cards"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faixa de prova -->
+    <div class="proof reveal">
+      <div><b>&lt; 2s</b><span>de carregamento médio</span></div>
+      <div><b>99%</b><span>de performance mobile</span></div>
+      <div><b>100%</b><span>código sob medida, sem templates</span></div>
+      <div><b>Tempo real</b><span>lead direto no seu WhatsApp</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ 2. DIFERENCIAIS ═══════════════ -->
+<section class="section" id="diferenciais">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">Diferenciais</span>
+      <h2>Tecnologia que <em>reduz o custo dos seus anúncios</em> e multiplica conversões</h2>
+      <p>Cada decisão técnica existe por um motivo: fazer o visitante chegar mais rápido, entender melhor e converter mais.</p>
+    </div>
+    <div class="grid-4">
+      <article class="card reveal">
+        <div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>Velocidade superior</h3>
+        <p>Páginas em Bootstrap e HTML puro carregam até <strong style="color:var(--text)">3x mais rápido</strong> que sites pesados em WordPress. Página rápida = melhor índice de qualidade no Google Ads = anúncio mais barato.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4-2.5 5.3-.8.8-1.5 1.9-1.5 3.2h-6c0-1.3-.7-2.4-1.5-3.2C6.2 13 5 11.4 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg></div>
+        <h3>Copy e layout com IA</h3>
+        <p>Uso IA de forma científica para analisar o comportamento de consumo do seu público e estruturar textos persuasivos, com hierarquia visual que guia o olhar até o botão de ação.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M6 12h.01M10 8h8M10 12h8M6 16h12"/></svg></div>
+        <h3>Automações em Python</h3>
+        <p>Nenhum lead fica perdido em caixa de entrada. Os dados do formulário vão <strong style="color:var(--text)">direto para o seu WhatsApp, e-mail ou planilha</strong> — em tempo real, no segundo em que o cliente clica em enviar.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+        <h3>Design responsivo impecável</h3>
+        <p>Mais de 80% do tráfego de anúncios vem do celular. A experiência mobile é projetada primeiro — botões no alcance do polegar, textos legíveis e zero rolagem quebrada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 3. VITRINE ═══════════════ -->
+<section class="section" id="portfolio" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">Vitrine</span>
+      <h2>Cada segmento pede uma <em>identidade própria</em></h2>
+      <p>Nada de template genérico. O design nasce do posicionamento do seu negócio — veja dois estilos de projeto que entrego.</p>
+    </div>
+    <div class="vitrine">
+      <article class="show reveal">
+        <span class="mono">Saúde & Estética</span>
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">clinica-exemplo.com.br</span></div>
+          <div class="browser-body"><div class="demo-saude">
+            <div class="top"><div class="logo"></div><div class="navpts"><i></i><i></i><i></i></div></div>
+            <div class="h"></div><div class="h2"></div><div class="t"></div>
+            <div class="cta"></div>
+            <div class="cards"><i></i><i></i><i></i></div>
+          </div></div>
+        </div>
+        <h3>Visual clean, focado em agendamentos</h3>
+        <p>Tons suaves, respiro e um caminho único: transformar a visita em consulta marcada.</p>
+        <div class="badges">
+          <span class="badge ok">▲ Velocidade: 99% no mobile</span>
+          <span class="badge blue">◆ Otimizado para Google Ads</span>
+        </div>
+      </article>
+
+      <article class="show reveal">
+        <span class="mono">Corporativo & Advocacia</span>
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">escritorio-exemplo.adv.br</span></div>
+          <div class="browser-body"><div class="demo-adv">
+            <div class="top"><div class="logo"></div><div class="navpts"><i></i><i></i><i></i></div></div>
+            <div class="rule"></div>
+            <div class="h"></div><div class="h2"></div><div class="t"></div>
+            <div class="cta"></div>
+            <div class="cols"><i></i><i></i></div>
+          </div></div>
+        </div>
+        <h3>Estética robusta e elegante</h3>
+        <p>Sobriedade, tipografia serifada e autoridade — para captar contatos realmente qualificados.</p>
+        <div class="badges">
+          <span class="badge ok">▲ Velocidade: 99% no mobile</span>
+          <span class="badge blue">◆ Otimizado para Google Ads</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 4. PLANOS ═══════════════ -->
+<section class="section" id="planos">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="tag">Planos</span>
+      <h2>Escolha o nível de <em>tecnologia</em> do seu projeto</h2>
+      <p>Todos os planos incluem design exclusivo, página responsiva e botão de WhatsApp.</p>
+    </div>
+    <div class="plans">
+
+      <article class="plan reveal">
+        <span class="mono">Express</span>
+        <h3>Básico</h3>
+        <p class="desc">Presença digital profissional no ar em tempo recorde.</p>
+        <!-- EDITE O PREÇO AQUI ▼ -->
+        <div class="price">R$ 497</div>
+        <p class="price-note">pagamento único</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Landing page estática de <strong>seção única</strong></span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Velocidade de entrega</strong> priorizada</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Redirecionamento direto para o WhatsApp</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Design responsivo e otimizado</span></li>
+        </ul>
+        <a class="btn btn-ghost js-wa" href="#" data-msg="Olá! Tenho interesse no plano Express (Básico).">Começar com o Express</a>
+      </article>
+
+      <article class="plan hot reveal">
+        <span class="flag">Mais escolhido</span>
+        <span class="mono">Pro</span>
+        <h3>Intermediário</h3>
+        <p class="desc">O carro-chefe: design robusto + captura inteligente de leads.</p>
+        <!-- EDITE O PREÇO AQUI ▼ -->
+        <div class="price">R$ 897</div>
+        <p class="price-note">pagamento único</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Tudo do plano Express</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Página completa com <strong>múltiplas seções</strong></span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Formulário inteligente</strong> de captura de dados</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Copy persuasiva estruturada com IA</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Otimização para campanhas de anúncios</span></li>
+        </ul>
+        <a class="btn btn-primary js-wa" href="#" data-msg="Olá! Tenho interesse no plano Pro (Intermediário).">Quero o plano Pro</a>
+      </article>
+
+      <article class="plan reveal">
+        <span class="mono">Premium</span>
+        <h3>Inteligência Artificial</h3>
+        <p class="desc">Página completa + backend Python trabalhando por você 24h.</p>
+        <!-- EDITE O PREÇO AQUI ▼ -->
+        <div class="price">R$ 1.497</div>
+        <p class="price-note">pagamento único</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Tudo do plano Pro</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Backend Python</strong> de automação integrado</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>E-mails instantâneos e leads em planilha em tempo real</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Chatbot de IA</strong> para triagem inicial dos leads antes do WhatsApp</span></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Notificação imediata de cada novo lead</span></li>
+        </ul>
+        <a class="btn btn-ghost js-wa" href="#" data-msg="Olá! Tenho interesse no plano Premium com Inteligência Artificial.">Quero o Premium</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 5. FAQ ═══════════════ -->
+<section class="section" id="faq" style="padding-top:0">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="tag">FAQ</span>
+      <h2>Perguntas <em>frequentes</em></h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Como funciona a hospedagem e o domínio do site?</summary>
+        <div class="ans">Eu cuido de toda a parte técnica: configuro a hospedagem (com opções de excelente custo-benefício e até gratuitas para páginas estáticas) e conecto o seu domínio — por exemplo, <em>suaempresa.com.br</em>. Se você ainda não tem um domínio, eu te oriento na compra em poucos minutos. Você fica com acesso e propriedade de tudo.</div>
+      </details>
+      <details>
+        <summary>Posso fazer alterações de texto e imagens depois que o site estiver no ar?</summary>
+        <div class="ans">Sim. Pequenos ajustes de texto e troca de imagens estão incluídos no período de entrega. Depois disso, você pode solicitar alterações pontuais sempre que precisar — e o código é organizado e comentado, então qualquer atualização é rápida e barata, sem depender de plataformas fechadas.</div>
+      </details>
+      <details>
+        <summary>Qual a diferença de uma página feita em Bootstrap para uma no WordPress?</summary>
+        <div class="ans">WordPress carrega dezenas de plugins, temas e scripts que você não usa — isso deixa a página pesada, lenta e vulnerável. Uma página em Bootstrap/HTML puro contém apenas o código necessário: carrega até 3x mais rápido, tem nota superior no Google PageSpeed e melhora o índice de qualidade dos seus anúncios, o que reduz o custo por clique.</div>
+      </details>
+      <details>
+        <summary>Vocês usam Inteligência Artificial na criação?</summary>
+        <div class="ans">Sim — de forma estratégica. A IA entra na análise de dados do seu público, no SEO e na otimização de conversão. Mas todo o código, o design e a experiência do usuário são desenvolvidos e revisados manualmente por mim, garantindo um resultado exclusivo, sem cara de template automático.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 6. FORMULÁRIO INTELIGENTE ═══════════════ -->
+<section class="section" id="contato" style="padding-top:0">
+  <div class="container">
+    <div class="auto-grid">
+      <div class="reveal">
+        <span class="tag">Demonstração ao vivo</span>
+        <h2 style="font-size:clamp(1.7rem,3.2vw,2.4rem);margin:18px 0 16px">Sinta a velocidade da <em style="font-style:normal;color:var(--blue-soft)">automação na prática</em></h2>
+        <p style="color:var(--muted)">Este formulário é o mesmo sistema que instalo nas páginas dos meus clientes. Preencha e veja em tempo real a esteira de automação processar seus dados — no segundo seguinte, sou notificado no celular e você já cai direto no meu WhatsApp.</p>
+        <ul class="hero-checks" style="margin-top:26px;display:grid;gap:12px">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Retorno imediato, sem espera</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Notificação instantânea de novo lead</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> É exatamente isso que seus clientes vão sentir</li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" name="nome" type="text" placeholder="Seu nome" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-zap">WhatsApp</label>
+            <input id="f-zap" name="whatsapp" type="tel" placeholder="(32) 9 9999-9999" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="field">
+            <label for="f-seg">Profissão / Segmento</label>
+            <select id="f-seg" name="segmento" required>
+              <option value="" disabled selected>Selecione o seu segmento</option>
+              <option>Saúde & Estética</option>
+              <option>Advocacia & Corporativo</option>
+              <option>Fotografia & Criativos</option>
+              <option>Comércio & Serviços locais</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%" id="sendBtn">
+            Enviar e falar no WhatsApp
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <!-- Esteira de automação (aparece após o envio) -->
+        <div class="pipeline" id="pipeline" aria-live="polite">
+          <div class="pipe-top">nettin.automation — ao vivo</div>
+          <div class="pipe-body" id="pipeBody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALERIA DE PROJETOS (PRINTS) ═══════════════ -->
+<section class="section" id="projetos" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">Projetos entregues</span>
+      <h2>Sistemas e páginas que <em>já estão no ar</em></h2>
+      <p>Prints reais de projetos desenvolvidos. Para atualizar esta galeria, basta salvar suas imagens na pasta <code style="font-family:var(--font-mono);font-size:.82em;color:var(--blue-soft)">/prints</code> com os nomes print-01.png a print-06.png.</p>
+    </div>
+
+    <!--
+      GALERIA — COMO EDITAR:
+      · Troque o src das imagens abaixo pelos seus prints.
+      · Edite o <b>título</b> e o <span>tipo</span> de cada figcaption.
+      · Para adicionar mais, copie um bloco <figure class="print">...</figure>.
+      · Se a imagem não existir, um placeholder aparece sozinho.
+    -->
+    <div class="gallery">
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-01</span></div>
+          <div class="browser-body"><img src="prints/print-01.png" alt="Print do projeto 1" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Landing page — Advocacia</b><span>LP institucional</span></figcaption>
+      </figure>
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-02</span></div>
+          <div class="browser-body"><img src="prints/print-02.png" alt="Print do projeto 2" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Landing page — Fotografia</b><span>Portfólio criativo</span></figcaption>
+      </figure>
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-03</span></div>
+          <div class="browser-body"><img src="prints/print-03.png" alt="Print do projeto 3" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Consultoria financeira</b><span>LP de captação</span></figcaption>
+      </figure>
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-04</span></div>
+          <div class="browser-body"><img src="prints/print-04.png" alt="Print do projeto 4" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Portfólio dev</b><span>Site pessoal</span></figcaption>
+      </figure>
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-05</span></div>
+          <div class="browser-body"><img src="prints/print-05.png" alt="Print do projeto 5" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Sistema de automação</b><span>Backend Python</span></figcaption>
+      </figure>
+      <figure class="print reveal">
+        <div class="browser">
+          <div class="browser-top"><i></i><i></i><i></i><span class="url">projeto-06</span></div>
+          <div class="browser-body"><img src="prints/print-06.png" alt="Print do projeto 6" loading="lazy" onerror="this.closest('.print').classList.add('vazio')"></div>
+        </div>
+        <figcaption><b>Seu próximo projeto</b><span>Em breve</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA FINAL ═══════════════ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-bar reveal">
+      <div>
+        <h2>Pronto para ter uma página que trabalha por você?</h2>
+        <p>Orçamento gratuito, sem compromisso. Resposta em poucos minutos.</p>
+      </div>
+      <a class="btn btn-primary js-wa" href="#" data-msg="Olá! Quero um orçamento gratuito para minha landing page.">
+        Solicitar orçamento
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 7. FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#inicio">nettin<span>.dev</span></a>
+        <p>Landing pages ultra-velozes com automação em Python e inteligência artificial, feitas para transformar tráfego em clientes.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" id="footEmail">contato@nettin.dev</a></li>
+          <li><a href="#" class="js-wa" data-msg="Olá! Vim pelo site nettin.dev.">WhatsApp — atendimento direto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 nettin.dev — Todos os direitos reservados.</span>
+      <span class="mono">Desenvolvido com HTML · CSS · JS · Python</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Botão flutuante do WhatsApp -->
+<a class="wa-float js-wa" href="#" data-msg="Olá! Vim pelo site nettin.dev e quero saber mais." aria-label="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.03a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.12.82.83-3.04-.2-.31a8.07 8.07 0 0 1-1.24-4.28c0-4.47 3.64-8.1 8.11-8.1 4.47 0 8.1 3.63 8.1 8.1 0 4.47-3.63 8.12-8.05 8.12zm4.44-6.07c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.64-1.21-1.44-1.35-1.68-.14-.24-.02-.37.11-.5.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.42.06-.65.3-.22.24-.85.83-.85 2.03s.87 2.36.99 2.52c.12.16 1.72 2.62 4.16 3.68.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.05.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   CONFIGURAÇÃO — EDITE AQUI SEUS CONTATOS
+   ═══════════════════════════════════════════════════════ */
+const CONFIG = {
+  // Número no formato internacional, só dígitos: 55 + DDD + número
+  WHATSAPP: "5532999999999",
+  EMAIL: "contato@nettin.dev",
+};
+
+/* ── WhatsApp: aplica o número em todos os botões .js-wa ── */
+document.querySelectorAll(".js-wa").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    const msg = encodeURIComponent(el.dataset.msg || "Olá! Vim pelo site nettin.dev.");
+    window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`, "_blank", "noopener");
+  });
+});
+const footEmail = document.getElementById("footEmail");
+footEmail.textContent = CONFIG.EMAIL;
+footEmail.href = "mailto:" + CONFIG.EMAIL;
+
+/* ── Navbar com fundo ao rolar ── */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 24), {passive:true});
+
+/* ── Animação de entrada (reveal) ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+}, {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ── Máscara simples do WhatsApp ── */
+const zap = document.getElementById("f-zap");
+zap.addEventListener("input", () => {
+  let v = zap.value.replace(/\D/g,"").slice(0,11);
+  if (v.length > 6)      zap.value = `(${v.slice(0,2)}) ${v.slice(2,3)} ${v.slice(3,7)}-${v.slice(7)}`;
+  else if (v.length > 2) zap.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+  else                   zap.value = v;
+});
+
+/* ── Formulário: esteira de automação + redirecionamento ── */
+const form = document.getElementById("leadForm");
+const pipeline = document.getElementById("pipeline");
+const pipeBody = document.getElementById("pipeBody");
+const sendBtn = document.getElementById("sendBtn");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  if (!form.reportValidity()) return;
+
+  const nome = form.nome.value.trim();
+  const fone = form.whatsapp.value.trim();
+  const seg  = form.segmento.value;
+
+  sendBtn.disabled = true;
+  sendBtn.style.opacity = .6;
+  pipeline.classList.add("on");
+  pipeBody.innerHTML = "";
+
+  const t0 = performance.now();
+  const passos = [
+    {ms: 120,  txt: `<span class="b">lead.receber()</span> — dados de <span class="b">${escapeHtml(nome)}</span> capturados`},
+    {ms: 340,  txt: `<span class="b">lead.validar()</span> — WhatsApp e segmento (${escapeHtml(seg)}) verificados`},
+    {ms: 620,  txt: `<span class="b">notificar.dev()</span> — nettin.dev avisado no celular <span class="ok">✓</span>`},
+    {ms: 900,  txt: `<span class="ok">✓ concluído</span> — abrindo seu atendimento no WhatsApp…`},
+  ];
+
+  passos.forEach((p, i) => {
+    setTimeout(() => {
+      const line = document.createElement("div");
+      line.className = "pipe-line";
+      line.innerHTML = `<span class="t">[${String(Math.round(performance.now()-t0)).padStart(4," ")}ms]</span><span>${p.txt}</span>`;
+      pipeBody.appendChild(line);
+      requestAnimationFrame(() => line.classList.add("go"));
+    }, p.ms);
+  });
+
+  /* Redireciona para o WhatsApp com os dados preenchidos */
+  setTimeout(() => {
+    const msg = encodeURIComponent(
+      `Olá! Acabei de preencher o formulário do site.\n\n` +
+      `👤 Nome: ${nome}\n📱 WhatsApp: ${fone}\n💼 Segmento: ${seg}\n\n` +
+      `Quero um orçamento de landing page.`
+    );
+    window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`, "_blank", "noopener");
+    sendBtn.disabled = false;
+    sendBtn.style.opacity = 1;
+  }, 1600);
+});
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+</script>
+</body>
+</html>
