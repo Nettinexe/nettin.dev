@@ -1,0 +1,9 @@
+COMO ADICIONAR SEUS PRINTS
+==========================
+1. Salve os prints dos seus projetos nesta pasta com os nomes:
+   print-01.png, print-02.png ... print-06.png
+2. Formato recomendado: PNG ou JPG, proporção 16:10 (ex: 1600x1000px).
+   A imagem é alinhada pelo topo, então prints de página inteira funcionam bem.
+3. Para trocar títulos/legendas ou adicionar mais cards, edite a seção
+   "GALERIA DE PROJETOS" no index.html (há instruções em comentário lá).
+Enquanto o arquivo não existir, o card mostra um placeholder automático.

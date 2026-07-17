@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonas Almeida — Desenvolvedor & Criador de Soluções Digitais</title>
+  <meta name="description" content="Portfólio e soluções em desenvolvimento de Landing Pages, Sistemas Web e Design de Alta Conversão.">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Google Fonts: Space Grotesk + Inter + Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       TOKENS DE DESIGN — ESTÉTICA DARK PREMIUM / PORTFÓLIO
+       ===================================================== */
+    :root {
+      --fundo:        #0D0F12;
+      --fundo-card:   #16191E;
+      --fundo-hover:  #1E2229;
+      --bordas:       #2A2F3A;
+      --borda-clara:  rgba(255, 255, 255, 0.15);
+      
+      --acento:       #3E63DD;
+      --acento-glow:  rgba(62, 99, 221, 0.35);
+      --destaque:     #00F2FE;
+      
+      --texto:        #F1F5F9;
+      --texto-suave:  #94A3B8;
+
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body:    "Inter", system-ui, sans-serif;
+      --font-mono:    "Space Mono", monospace;
+
+      --radius-lg:    16px;
+      --radius-md:    10px;
+      --transition:   all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ================= BASE & RESETS ================= */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background-color: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .display-font { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }
+    .mono { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    a { color: var(--destaque); text-decoration: none; transition: var(--transition); }
+    a:hover { color: #fff; }
+    
+    .section-padding { padding: 100px 0; }
+    .text-suave { color: var(--texto-suave); }
+    
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--bordas);
+      border-radius: 99px;
+      color: var(--destaque);
+      margin-bottom: 1rem;
+    }
+
+    /* ================= BOTÕES ================= */
+    .btn-main {
+      background: linear-gradient(135deg, var(--acento), #2B4ACA);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      box-shadow: 0 4px 20px var(--acento-glow);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(62, 99, 221, 0.6);
+      color: #fff;
+    }
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--texto);
+      border: 1px solid var(--bordas);
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-outline-custom:hover {
+      background: var(--fundo-card);
+      border-color: var(--destaque);
+      color: var(--destaque);
+      transform: translateY(-2px);
+    }
+
+    /* ================= NAVEGAÇÃO ================= */
+    .navbar {
+      background: rgba(13, 15, 18, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 18px 0;
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      padding: 12px 0;
+      background: rgba(13, 15, 18, 0.95);
+      border-bottom-color: var(--bordas);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .navbar-brand { font-family: var(--font-display); font-size: 1.4rem; color: #fff !important; font-weight: 700; }
+    .navbar-brand span { color: var(--destaque); }
+    .nav-link { color: var(--texto-suave) !important; font-weight: 500; font-size: 0.95rem; margin: 0 8px; }
+    .nav-link:hover, .nav-link.active { color: #fff !important; }
+
+    /* ================= HERO SECTION ================= */
+    .hero {
+      padding: 160px 0 80px;
+      position: relative;
+      background: radial-gradient(circle at 50% 10%, rgba(62, 99, 221, 0.15) 0%, transparent 60%);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 span {
+      background: linear-gradient(to right, #fff, var(--destaque));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: clamp(1.1rem, 2vw, 1.25rem); max-width: 650px; margin: 0 auto 2.5rem; }
+
+    /* ================= PORTFÓLIO FIRST ================= */
+    .portfolio-section { position: relative; z-index: 2; }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--bordas);
+      color: var(--texto-suave);
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--acento);
+      border-color: var(--acento);
+      color: #fff;
+      box-shadow: 0 0 15px var(--acento-glow);
+    }
+    
+    .project-card {
+      background: var(--fundo-card);
+      border: 1px solid var(--bordas);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--borda-clara);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .project-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #20242D;
+      overflow: hidden;
+    }
+    .project-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-img-wrap img { transform: scale(1.06); }
+    
+    .project-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(13, 15, 18, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--destaque);
+      z-index: 2;
+    }
+    .project-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-title { font-size: 1.35rem; margin-bottom: 10px; color: #fff; }
+    .project-desc { font-size: 0.92rem; color: var(--texto-suave); margin-bottom: 20px; }
+    
+    .project-techs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tech-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      color: #CBD5E1;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #fff;
+      border-top: 1px solid var(--bordas);
+      padding-top: 16px;
+      width: 100%;
+    }
+    .project-link i { transition: transform 0.3s ease; color: var(--destaque); }
+    .project-card:hover .project-link i { transform: translateX(6px); }
+
+    /* Animação Suave de Filtro (Correção de Bug Visual) */
+    .project-item { transition: opacity 0.35s ease, transform 0.35s ease; }
+    .project-item.filtering-out { opacity: 0; transform: scale(0.95); pointer-events: none; }
+    .project-item.hide { display: none; }
+
+    /* ================= SERVIÇOS & DIFERENCIAIS ================= */
+    .service-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--bordas);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      height: 100%;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      background: var(--fundo-card);
+      border-color: var(--destaque);
+      transform: translateY(-5px);
+    }
+    .service-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--destaque);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 20px;
+    }
+    
+    .stats-section {
+      background: linear-gradient(180deg, var(--fundo) 0%, var(--fundo-card) 50%, var(--fundo) 100%);
+      border-top: 1px solid var(--bordas);
+      border-bottom: 1px solid var(--bordas);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 700; color: #fff; line-height: 1; margin-bottom: 8px;
+    }
+    .stat-number span { color: var(--destaque); }
+
+    /* ================= NOVA SEÇÃO: DEPOIMENTOS (PROVA SOCIAL) ================= */
+    .testimonial-card {
+      background: var(--fundo-card);
+      border: 1px solid var(--bordas);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      height: 100%;
+      position: relative;
+    }
+    .testimonial-card i.quote-icon {
+      font-size: 2rem; color: rgba(255,255,255,0.08);
+      position: absolute; top: 20px; right: 25px;
+    }
+    .author-info { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--acento); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+
+    /* ================= SOBRE MIM ================= */
+    .about-box {
+      background: var(--fundo-card);
+      border: 1px solid var(--bordas);
+      border-radius: var(--radius-lg);
+      padding: clamp(30px, 5vw, 50px);
+    }
+    .profile-img-placeholder {
+      aspect-ratio: 1/1; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #20242D, #11141A);
+      border: 1px solid var(--bordas);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--texto-suave); text-align: center; padding: 20px;
+    }
+
+    /* ================= CONTATO ================= */
+    .form-control, .form-select {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--bordas);
+      border-radius: var(--radius-md);
+      padding: 12px 16px; color: #fff; transition: var(--transition);
+    }
+    .form-control:focus, .form-select:focus {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--destaque); color: #fff;
+      box-shadow: 0 0 0 4px rgba(0, 242, 254, 0.1);
+    }
+    .form-control::placeholder { color: #475569; }
+    
+    /* ================= FOOTER & BOTÃO FLUTUANTE ================= */
+    footer { border-top: 1px solid var(--bordas); padding: 40px 0; font-size: 0.9rem; color: var(--texto-suave); }
+    .wpp-float {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      background: #25D366; color: #fff !important;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      z-index: 1000; transition: var(--transition);
+    }
+    .wpp-float:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6); }
+
+    /* ================= ACESSIBILIDADE & MOTION (CORREÇÃO WCAG) ================= */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .project-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">Jonas Almeida<span>.</span></a>
+      <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+        <i class="bi bi-list fs-1"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-2">
+          <li class="nav-item"><a class="nav-link nav-close-click" href="#portfolio">Trabalhos</a></li>
+          <li class="nav-item"><a class="nav-link nav-close-click" href="#servicos">Soluções</a></li>
+          <li class="nav-item"><a class="nav-link nav-close-click" href="#diferenciais">Métricas</a></li>
+          <li class="nav-item"><a class="nav-link nav-close-click" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link nav-close-click" href="#sobre">Sobre</a></li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a href="#contato" class="btn btn-main btn-sm px-4 py-2 nav-close-click">Solicitar Orçamento</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Envelopamento semântico <main> adicionado -->
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <header class="hero text-center">
+      <div class="container">
+        <div class="header-tag mono reveal">
+          <i class="bi bi-terminal-fill"></i> PORTFÓLIO & SOLUÇÕES DIGITAIS
+        </div>
+        <h1 class="reveal">Desenvolvimento de páginas que<br><span>conectam design e conversão.</span></h1>
+        <p class="text-suave reveal">Confira abaixo os meus projetos recentes na prática. Criei esta estrutura para demonstrar meu domínio em layout, UI/UX e arquitetura orientada a resultados.</p>
+        
+        <div class="d-flex justify-content-center gap-3 flex-wrap reveal">
+          <a href="#portfolio" class="btn btn-main"><i class="bi bi-grid-fill"></i> Ver Meus Trabalhos</a>
+          <a href="#contato" class="btn btn-outline-custom">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= PORTFÓLIO FIRST ================= -->
+    <section id="portfolio" class="section-padding portfolio-section">
+      <div class="container">
+        
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 reveal">
+          <div>
+            <div class="header-tag mono"><i class="bi bi-star-fill"></i> PROVA VISUAL</div>
+            <h2>Projetos & Cases Selecionados</h2>
+          </div>
+          
+          <!-- Botões de filtro acessíveis com aria-pressed -->
+          <div class="d-flex gap-2 flex-wrap mt-3 mt-md-0" id="filter-buttons" role="group" aria-label="Filtrar projetos por categoria">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+            <button class="filter-btn" data-filter="lp" aria-pressed="false">Landing Pages</button>
+            <button class="filter-btn" data-filter="web" aria-pressed="false">Sistemas & Web</button>
+            <button class="filter-btn" data-filter="concept" aria-pressed="false">Conceitos</button>
+          </div>
+        </div>
+
+        <div class="row g-4" id="portfolio-grid">
+          <!-- Projeto 1 -->
+          <div class="col-md-6 col-lg-4 project-item lp reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Landing Page</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#2A2118,#141010);padding:22px 26px;" aria-hidden="true"><div style="width:100%;height:100%;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;"><div style="height:16px;background:#1B1E24;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5F57;"></span><span style="width:5px;height:5px;border-radius:50%;background:#FEBC2E;"></span><span style="width:5px;height:5px;border-radius:50%;background:#28C840;"></span></div><div style="flex:1;background:#17110C;padding:12px 14px;display:flex;flex-direction:column;justify-content:center;gap:7px;"><div style="font-family:Georgia,serif;color:#C9A05C;font-size:.62rem;letter-spacing:.2em;">R. MENDONÇA ADVOCACIA</div><div style="font-family:Georgia,serif;color:#F0E6D8;font-size:1rem;line-height:1.15;">Excelência jurídica<br>sob medida.</div><div style="width:34px;height:1px;background:#C9A05C;"></div><div style="height:4px;width:70%;background:rgba(240,230,216,.18);border-radius:2px;"></div><div style="height:4px;width:52%;background:rgba(240,230,216,.12);border-radius:2px;"></div><div style="margin-top:4px;width:96px;height:18px;border-radius:99px;background:#C9A05C;color:#17110C;font-size:.5rem;font-weight:700;display:flex;align-items:center;justify-content:center;">FALAR NO WHATSAPP</div></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">Landing Page para Advogados</h3>
+                  <p class="project-desc">Página de alta conversão estruturada com foco em captação de clientes para escritórios de advocacia de elite.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Design Editorial</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">Alta Conversão</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto 2 -->
+          <div class="col-md-6 col-lg-4 project-item web reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Sistemas & Web</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#232A3B,#12151D);padding:22px 26px;" aria-hidden="true"><div style="width:100%;height:100%;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;"><div style="height:16px;background:#1B1E24;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5F57;"></span><span style="width:5px;height:5px;border-radius:50%;background:#FEBC2E;"></span><span style="width:5px;height:5px;border-radius:50%;background:#28C840;"></span></div><div style="flex:1;background:#F4F6FA;display:flex;"><div style="width:26%;background:#151A26;padding:10px 8px;display:flex;flex-direction:column;gap:6px;"><div style="height:6px;width:70%;background:#3E63DD;border-radius:3px;"></div><div style="height:4px;width:85%;background:rgba(255,255,255,.25);border-radius:2px;"></div><div style="height:4px;width:60%;background:rgba(255,255,255,.15);border-radius:2px;"></div><div style="height:4px;width:75%;background:rgba(255,255,255,.15);border-radius:2px;"></div></div><div style="flex:1;padding:10px;display:flex;flex-direction:column;gap:8px;"><div style="display:flex;gap:6px;"><div style="flex:1;height:26px;background:#fff;border-radius:6px;box-shadow:0 2px 6px rgba(20,30,60,.08);"></div><div style="flex:1;height:26px;background:#fff;border-radius:6px;box-shadow:0 2px 6px rgba(20,30,60,.08);"></div><div style="flex:1;height:26px;background:#fff;border-radius:6px;box-shadow:0 2px 6px rgba(20,30,60,.08);"></div></div><div style="flex:1;background:#fff;border-radius:6px;box-shadow:0 2px 6px rgba(20,30,60,.08);display:flex;align-items:flex-end;gap:6px;padding:8px;"><div style="flex:1;height:30%;background:#C9D4F5;border-radius:3px 3px 0 0;"></div><div style="flex:1;height:55%;background:#8FA6EC;border-radius:3px 3px 0 0;"></div><div style="flex:1;height:42%;background:#C9D4F5;border-radius:3px 3px 0 0;"></div><div style="flex:1;height:78%;background:#3E63DD;border-radius:3px 3px 0 0;"></div><div style="flex:1;height:62%;background:#8FA6EC;border-radius:3px 3px 0 0;"></div></div></div></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">Sistema de Gestão & CRM</h3>
+                  <p class="project-desc">Dashboard administrativo e painel de controle de métricas com foco em escaneabilidade e usabilidade limpa.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">UI/UX Dashboard</span>
+                    <span class="tech-tag">Bootstrap 5</span>
+                    <span class="tech-tag">Responsivo</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto 3 -->
+          <div class="col-md-6 col-lg-4 project-item lp reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Landing Page</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#3A1B2E,#141018);padding:22px 26px;" aria-hidden="true"><div style="width:100%;height:100%;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;"><div style="height:16px;background:#1B1E24;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5F57;"></span><span style="width:5px;height:5px;border-radius:50%;background:#FEBC2E;"></span><span style="width:5px;height:5px;border-radius:50%;background:#28C840;"></span></div><div style="flex:1;background:#0F1116;padding:12px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;"><div style="font-size:.5rem;letter-spacing:.18em;color:#FF7A45;font-weight:700;">MÉTODO VALIDADO</div><div style="color:#fff;font-weight:800;font-size:.86rem;line-height:1.2;font-family:Arial,sans-serif;">Do zero à primeira<br>venda em 30 dias</div><div style="height:4px;width:64%;background:rgba(255,255,255,.15);border-radius:2px;"></div><div style="height:4px;width:48%;background:rgba(255,255,255,.10);border-radius:2px;"></div><div style="width:120px;height:22px;border-radius:6px;background:linear-gradient(90deg,#FF7A45,#FF4D6D);color:#fff;font-size:.52rem;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(255,90,80,.4);">QUERO COMEÇAR AGORA</div><div style="display:flex;gap:4px;"><span style="width:22px;height:3px;background:#FF7A45;border-radius:2px;"></span><span style="width:22px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;"></span><span style="width:22px;height:3px;background:rgba(255,255,255,.2);border-radius:2px;"></span></div></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">Página de Vendas de Infoproduto</h3>
+                  <p class="project-desc">Estrutura longa (Long-Form) com quebra de objeções, seções de prova social e otimização de velocidade.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Copywriting</span>
+                    <span class="tech-tag">Mobile-First</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto 4 -->
+          <div class="col-md-6 col-lg-4 project-item concept reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Conceito</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#123B33,#0B1512);padding:14px;" aria-hidden="true"><div style="width:96px;height:100%;max-height:186px;background:#0E1F1A;border:2px solid rgba(255,255,255,.14);border-radius:16px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 14px 30px rgba(0,0,0,.5);"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#33E6A5,#0FA97B);display:flex;align-items:center;justify-content:center;color:#062018;font-weight:800;font-size:.6rem;">B</div><div style="height:4px;width:60%;background:rgba(255,255,255,.4);border-radius:2px;"></div><div style="height:3px;width:46%;background:rgba(255,255,255,.18);border-radius:2px;"></div><div style="width:100%;height:15px;border-radius:99px;background:#33E6A5;"></div><div style="width:100%;height:15px;border-radius:99px;border:1px solid rgba(255,255,255,.3);"></div><div style="width:100%;height:15px;border-radius:99px;border:1px solid rgba(255,255,255,.3);"></div><div style="width:100%;height:15px;border-radius:99px;border:1px solid rgba(255,255,255,.3);"></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">Cartão Digital / Link-in-Bio</h3>
+                  <p class="project-desc">Página mobile ultra-leve desenhada para profissionais autônomos concentrarem agendamentos via Instagram.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Minimalista</span>
+                    <span class="tech-tag">Foco no Clique</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto 5 -->
+          <div class="col-md-6 col-lg-4 project-item lp reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Landing Page</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#26303B,#12161C);padding:22px 26px;" aria-hidden="true"><div style="width:100%;height:100%;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;"><div style="height:16px;background:#1B1E24;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5F57;"></span><span style="width:5px;height:5px;border-radius:50%;background:#FEBC2E;"></span><span style="width:5px;height:5px;border-radius:50%;background:#28C840;"></span></div><div style="flex:1;display:flex;"><div style="width:46%;background:#101820;padding:12px 10px;display:flex;flex-direction:column;justify-content:center;gap:6px;"><div style="font-size:.48rem;letter-spacing:.16em;color:#DDA76A;font-weight:700;">CONSULTORIA</div><div style="color:#F5F1E8;font-family:Georgia,serif;font-size:.8rem;line-height:1.2;">Autoridade que gera confiança</div><div style="width:70px;height:15px;border-radius:99px;background:#DDA76A;"></div></div><div style="flex:1;background:linear-gradient(160deg,#E8E2D6,#CDC4B2);padding:12px 10px;display:flex;flex-direction:column;justify-content:center;gap:6px;"><div style="height:5px;width:80%;background:rgba(16,24,32,.28);border-radius:3px;"></div><div style="height:5px;width:65%;background:rgba(16,24,32,.2);border-radius:3px;"></div><div style="height:5px;width:72%;background:rgba(16,24,32,.2);border-radius:3px;"></div><div style="display:flex;gap:5px;margin-top:4px;"><div style="flex:1;height:26px;background:#fff;border-radius:5px;"></div><div style="flex:1;height:26px;background:#fff;border-radius:5px;"></div></div></div></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">Página Institucional de Consultoria</h3>
+                  <p class="project-desc">Layout Split-Screen pensado para gerar posicionamento de autoridade e confiança imediata no mercado corporativo.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">High-Ticket</span>
+                    <span class="tech-tag">Design Elegante</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Projeto 6 -->
+          <div class="col-md-6 col-lg-4 project-item web reveal">
+            <div class="project-card">
+              <div class="project-img-wrap">
+                <span class="project-badge">Sistemas & Web</span>
+                <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background:linear-gradient(135deg,#1E2A26,#101815);padding:22px 26px;" aria-hidden="true"><div style="width:100%;height:100%;border-radius:8px;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.45);display:flex;flex-direction:column;"><div style="height:16px;background:#1B1E24;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5F57;"></span><span style="width:5px;height:5px;border-radius:50%;background:#FEBC2E;"></span><span style="width:5px;height:5px;border-radius:50%;background:#28C840;"></span></div><div style="flex:1;background:#EEF1F5;padding:10px;display:flex;flex-direction:column;gap:8px;"><div style="height:12px;display:flex;align-items:center;justify-content:space-between;"><div style="height:5px;width:34px;background:#1B2430;border-radius:3px;"></div><div style="height:10px;width:10px;border-radius:50%;background:#25D366;"></div></div><div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;"><div style="background:#fff;border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 6px rgba(0,0,0,.1);"><div style="height:26px;border-radius:4px;background:#FFD9C2;"></div><div style="height:3px;width:80%;background:#D8DCE3;border-radius:2px;"></div><div style="height:8px;width:100%;background:#25D366;border-radius:99px;"></div></div><div style="background:#fff;border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 6px rgba(0,0,0,.1);"><div style="height:26px;border-radius:4px;background:#C9E7FF;"></div><div style="height:3px;width:80%;background:#D8DCE3;border-radius:2px;"></div><div style="height:8px;width:100%;background:#25D366;border-radius:99px;"></div></div><div style="background:#fff;border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:4px;box-shadow:0 2px 6px rgba(0,0,0,.1);"><div style="height:26px;border-radius:4px;background:#D9F2D0;"></div><div style="height:3px;width:80%;background:#D8DCE3;border-radius:2px;"></div><div style="height:8px;width:100%;background:#25D366;border-radius:99px;"></div></div></div></div></div></div>
+              </div>
+              <div class="project-content">
+                <div>
+                  <h3 class="project-title">E-commerce de Catálogo Rápido</h3>
+                  <p class="project-desc">Vitrine interativa com finalização de pedido integrada diretamente ao WhatsApp da loja, zero taxas.</p>
+                  <div class="project-techs">
+                    <span class="tech-tag">Catálogo Dinâmico</span>
+                    <span class="tech-tag">UX Prática</span>
+                  </div>
+                </div>
+                <a href="#" class="project-link" target="_blank">Acessar Demonstração <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVIÇOS & SOLUÇÕES ================= -->
+    <section id="servicos" class="section-padding" style="background-color: #11141A;">
+      <div class="container">
+        <div class="text-center max-w-600 mx-auto mb-5 reveal">
+          <div class="header-tag mono"><i class="bi bi-lightning-charge-fill"></i> COMO POSSO AJUDAR</div>
+          <h2>Soluções que transformam cliques em negócios</h2>
+          <p class="text-suave">Além de um visual impactante, cada projeto é arquitetado para cumprir um objetivo de negócio claro e mensurável.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-layout-sidebar"></i></div>
+              <h4>Landing Pages de Alta Conversão</h4>
+              <p class="text-suave mb-0">Páginas rápidas, focadas em um único objetivo: transformar visitantes de campanhas pagas em leads e clientes.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+              <h4>Desenvolvimento Web & Front-End</h4>
+              <p class="text-suave mb-0">Código limpo, estruturado e com tempo de carregamento otimizado para garantir nota máxima nos motores de busca.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-phone"></i></div>
+              <h4>Mobile-First & Responsividade</h4>
+              <p class="text-suave mb-0">Garantia de usabilidade e perfeição visual em qualquer tela, do smartphone mais simples aos monitores ultralargos.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 reveal">
+            <div class="service-card">
+              <div class="service-icon"><i class="bi bi-sliders"></i></div>
+              <h4>Redesign & Otimização de UX</h4>
+              <p class="text-suave mb-0">Análise e reestruturação de páginas antigas que possuem tráfego mas não conseguem converter visitantes em vendas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DIFERENCIAIS & NÚMEROS ================= -->
+    <section id="diferenciais" class="section-padding stats-section">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5 reveal">
+            <div class="header-tag mono"><i class="bi bi-trophy-fill"></i> NÚMEROS DA PRÁTICA</div>
+            <h2>Métricas que comprovam o comprometimento</h2>
+            <p class="text-suave">A experiência de desenvolvimento não termina na entrega do código. O foco está no desempenho contínuo do seu negócio no ambiente digital.</p>
+            <a href="#contato" class="btn btn-outline-custom mt-2">Iniciar um Projeto</a>
+          </div>
+          
+          <div class="col-lg-7">
+            <div class="row g-4 text-center text-md-start">
+              <div class="col-6 col-md-6 reveal">
+                <div class="stat-number"><span class="contador" data-alvo="100">0</span><span>%</span></div>
+                <p class="text-suave mb-0 mono">Entregas no Prazo e com Fidelidade Visual</p>
+              </div>
+              <div class="col-6 col-md-6 reveal">
+                <div class="stat-number"><span class="contador" data-alvo="98">0</span><span>+</span></div>
+                <p class="text-suave mb-0 mono">Score Médio de Performance (Google PageSpeed)</p>
+              </div>
+              <div class="col-6 col-md-6 reveal">
+                <div class="stat-number"><span class="contador" data-alvo="5">0</span><span>x</span></div>
+                <p class="text-suave mb-0 mono">Mais Conversão comparado a sites genéricos</p>
+              </div>
+              <div class="col-6 col-md-6 reveal">
+                <div class="stat-number"><span>+</span><span class="contador" data-alvo="10">0</span></div>
+                <p class="text-suave mb-0 mono">Tipos e Layouts Diferentes Dominados</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NOVA SEÇÃO: DEPOIMENTOS ================= -->
+    <section id="depoimentos" class="section-padding">
+      <div class="container">
+        <div class="text-center max-w-600 mx-auto mb-5 reveal">
+          <div class="header-tag mono"><i class="bi bi-chat-quote-fill"></i> PROVA SOCIAL</div>
+          <h2>O que os clientes dizem na prática</h2>
+          <p class="text-suave">A confiabilidade de um profissional se mede pela experiência de quem já contratou seus serviços.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <i class="bi bi-quote quote-icon"></i>
+              <p class="mb-0 text-suave">"O redesenho da nossa página triplicou a geração de leads na primeira semana de tráfego pago. A pontualidade e o código limpo me impressionaram muito."</p>
+              <div class="author-info">
+                <div class="author-avatar">M</div>
+                <div>
+                  <strong class="d-block text-white">Marcos Oliveira</strong>
+                  <span class="mono text-suave" style="font-size: 0.7rem;">CEO · TechSolutions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <i class="bi bi-quote quote-icon"></i>
+              <p class="mb-0 text-suave">"Extremamente prestativo. Além de entregar o projeto antes do prazo, me orientou sobre como otimizar as imagens para o site carregar instantaneamente no celular."</p>
+              <div class="author-info">
+                <div class="author-avatar">C</div>
+                <div>
+                  <strong class="d-block text-white">Camila Duarte</strong>
+                  <span class="mono text-suave" style="font-size: 0.7rem;">Advogada Associada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <i class="bi bi-quote quote-icon"></i>
+              <p class="mb-0 text-suave">"Trabalho impecável! A comunicação foi clara do início ao fim e a página de vendas ficou exatamente com a estética Dark Premium exclusiva que eu procurava."</p>
+              <div class="author-info">
+                <div class="author-avatar">R</div>
+                <div>
+                  <strong class="d-block text-white">Rafael Souza</strong>
+                  <span class="mono text-suave" style="font-size: 0.7rem;">Infoprodutor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE MIM ================= -->
+    <section id="sobre" class="section-padding" style="background-color: #11141A;">
+      <div class="container">
+        <div class="about-box reveal">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-4">
+              <div class="profile-img-placeholder" style="position:relative;overflow:hidden;justify-content:center;gap:14px;"><div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:26px 26px;" aria-hidden="true"></div><div style="width:118px;height:118px;border-radius:50%;background:linear-gradient(135deg,var(--acento),var(--destaque));padding:3px;position:relative;"><div style="width:100%;height:100%;border-radius:50%;background:#11141A;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:2.4rem;color:var(--texto);">JA</div></div><div class="mono" style="position:relative;color:var(--destaque);">JONAS ALMEIDA</div><span class="mono" style="position:relative;">DEV &amp; ESTRATEGISTA DIGITAL<br>DESDE 2021</span><!-- Para usar sua foto real: substitua este bloco por <img src="sua-foto.jpg" class="w-100 rounded-4" alt="Foto de Jonas Almeida"> --></div>
+            </div>
+            <div class="col-lg-8">
+              <div class="header-tag mono"><i class="bi bi-person-check-fill"></i> QUEM DESENVOLVE</div>
+              <h2>Muito prazer, sou Jonas Almeida.<br><span class="text-suave fs-4">Desenvolvedor & Estrategista Digital.</span></h2>
+              
+              <p class="mt-3">Acredito que o código e o design são meios para um fim: **resolver problemas e gerar valor de mercado**. Minha abordagem de trabalho une a precisão técnica da programação com a psicologia de usabilidade e conversão.</p>
+              
+              <p class="text-suave">Não construo apenas "páginas bonitas". Cada elemento posicionado, cada variação de contraste e cada animação é planejada para guiar os olhos do visitante naturalmente até a ação de compra ou contato.</p>
+              
+              <div class="d-flex flex-wrap gap-4 mt-4 pt-3 border-top" style="border-color: var(--bordas) !important;">
+                <div>
+                  <span class="mono d-block text-suave">Foco Principal</span>
+                  <strong>Landing Pages & UI/UX</strong>
+                </div>
+                <div>
+                  <span class="mono d-block text-suave">Tecnologias</span>
+                  <strong>HTML5, CSS3, JS, Bootstrap</strong>
+                </div>
+                <div>
+                  <span class="mono d-block text-suave">Localidade</span>
+                  <strong>Juiz de Fora – MG / Atendimento Online</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTATO / FECHAMENTO ================= -->
+    <section id="contato" class="section-padding" style="background-color: var(--fundo-card); border-top: 1px solid var(--bordas);">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5 reveal">
+            <div class="header-tag mono"><i class="bi bi-chat-dots-fill"></i> VAMOS CONVERSAR</div>
+            <h2>Pronto para criar uma página no nível do seu projeto?</h2>
+            <p class="text-suave mt-3">Me envie os detalhes do que você precisa. Seja para criar um novo projeto do zero ou para dar um upgrade no seu layout atual, responderei em até 24 horas.</p>
+            
+            <div class="d-flex flex-column gap-3 mt-4">
+              <a href="https://wa.me/5532998765432" target="_blank" class="d-flex align-items-center gap-3 text-white">
+                <div class="service-icon mb-0" style="width: 44px; height: 44px; font-size: 1.2rem;"><i class="bi bi-whatsapp"></i></div>
+                <div><strong class="d-block">WhatsApp Direto</strong><span class="text-suave small">(32) 99876-5432</span></div>
+              </a>
+              <a href="mailto:contato@jonasalmeida.dev" class="d-flex align-items-center gap-3 text-white">
+                <div class="service-icon mb-0" style="width: 44px; height: 44px; font-size: 1.2rem;"><i class="bi bi-envelope"></i></div>
+                <div><strong class="d-block">E-mail Profissional</strong><span class="text-suave small">contato@jonasalmeida.dev</span></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-7 reveal">
+            <div class="p-4 rounded-4" style="background: rgba(0,0,0,0.2); border: 1px solid var(--bordas);">
+              <h4 class="mb-4">Envie uma mensagem rápida</h4>
+              <form id="formWpp" class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label mono text-suave">Seu Nome</label>
+                  <input type="text" class="form-control" id="wppNome" placeholder="Ex: João Silva" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label mono text-suave">Seu WhatsApp</label>
+                  <input type="tel" class="form-control" id="wppTel" placeholder="(00) 90000-0000" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label mono text-suave">Tipo de Projeto</label>
+                  <select class="form-select" id="wppTipo">
+                    <option value="Landing Page de Alta Conversão">Landing Page de Alta Conversão</option>
+                    <option value="Desenvolvimento de Sistema / Web">Desenvolvimento de Sistema / Web</option>
+                    <option value="Redesign de Página Existente">Redesign de Página Existente</option>
+                    <option value="Outro assunto">Outro assunto</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label mono text-suave">Como posso ajudar?</label>
+                  <textarea class="form-control" id="wppMsg" rows="4" placeholder="Descreva brevemente sua ideia ou objetivo..."></textarea>
+                </div>
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-main w-100 justify-content-center py-3 fs-6">
+                    <i class="bi bi-send-fill"></i> Enviar Proposta via WhatsApp
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-1">© <span id="anoAtual"></span> Jonas Almeida. Desenvolvido com foco em alta performance visual e código limpo.</p>
+      <p class="mono text-suave mb-0" style="font-size: 0.7rem;">PORTFÓLIO FIRST ARCHITECTURE V2.0</p>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante -->
+  <a href="https://wa.me/5532998765432?text=Ol%C3%A1!%20Acessei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" class="wpp-float" aria-label="Falar no WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============================================================
+       JAVASCRIPT CORRIGIDO & OTIMIZADO
+       ============================================================ */
+
+    // 1) Navbar Dinâmica ao rolar a página
+    const navbar = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // 2) Fechar menu mobile automaticamente ao clicar em um link (Correção de Usabilidade)
+    const navLinks = document.querySelectorAll('.nav-close-click');
+    const menuCollapse = document.getElementById('navbarNav');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuCollapse.classList.contains('show')) {
+          new bootstrap.Collapse(menuCollapse).hide();
+        }
+      });
+    });
+
+    // 3) Filtro do Portfólio com Transição Suave (Correção de UI)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        projectItems.forEach(item => {
+          if (filterValue === 'all' || item.classList.contains(filterValue)) {
+            item.classList.remove('hide');
+            setTimeout(() => item.classList.remove('filtering-out'), 50);
+          } else {
+            item.classList.add('filtering-out');
+            setTimeout(() => item.classList.add('hide'), 300);
+          }
+        });
+      });
+    });
+
+    // 4) Scroll Reveal Acessível
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!isReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    // 5) Contadores com Trava de Motion (Correção WCAG)
+    const animarContador = (target) => {
+      const endValue = parseInt(target.getAttribute('data-alvo'), 10);
+      if (isReducedMotion) {
+        target.textContent = endValue;
+        return;
+      }
+      let startValue = 0;
+      const duration = 1500;
+      const stepTime = Math.max(Math.abs(Math.floor(duration / endValue)), 20);
+
+      const timer = setInterval(() => {
+        startValue += 1;
+        target.textContent = startValue;
+        if (startValue >= endValue) {
+          target.textContent = endValue;
+          clearInterval(timer);
+        }
+      }, stepTime);
+    };
+
+    const countObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animarContador(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.contador').forEach(el => countObserver.observe(el));
+
+    // 6) Formulário WhatsApp com Encoding Seguro (Correção de Bug Crítico)
+    const MEU_WHATSAPP = '5532998765432'; // ➜ Substitua pelo seu número
+
+    document.getElementById('formWpp').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nome = document.getElementById('wppNome').value.trim();
+      const tel = document.getElementById('wppTel').value.trim();
+      const tipo = document.getElementById('wppTipo').value;
+      const msg = document.getElementById('wppMsg').value.trim();
+
+      // Uso de encodeURIComponent para evitar quebras com caracteres como '&', '#' e quebras de linha
+      const textoBruto = `*Olá! Vim pelo seu Portfólio.*\n\n` +
+                         `*Nome:* ${nome}\n` +
+                         `*WhatsApp:* ${tel}\n` +
+                         `*Interesse em:* ${tipo}\n\n` +
+                         `*Mensagem:* ${msg || 'Gostaria de solicitar um orçamento.'}`;
+
+      const textoSanitizado = encodeURIComponent(textoBruto);
+      window.open(`https://wa.me/${MEU_WHATSAPP}?text=${textoSanitizado}`, '_blank', 'noopener');
+    });
+
+    // 7) Ano automático no rodapé
+    document.getElementById('anoAtual').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
