@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contábil Meridiano — Contabilidade para quem empreende</title>
+  <meta name="description" content="Escritório de contabilidade em Belo Horizonte para pequenas e médias empresas: abertura de empresa, contabilidade consultiva, folha de pagamento e planejamento tributário.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- eyebrow acima do container, como no modelo -->
+  <p class="page-eyebrow"><span></span></p>
+
+  <div class="frame">
+
+    <!-- ============ HERO (escuro) ============ -->
+    <header class="hero" id="inicio">
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio" aria-label="Contábil Meridiano — início">
+          <svg class="brand-mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M6 26V6h6l8 12V6h6v20h-6l-8-12v12z" fill="currentColor"/>
+          </svg>
+          <span class="brand-name">MERIDIANO<em>contábil</em></span>
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#porque">Por que nós</a>
+          <a href="#time">Equipe</a>
+          <a href="#depoimentos">Clientes</a>
+          <a href="#contato" class="nav-cta">Abrir minha empresa</a>
+        </div>
+        <a class="nav-phone" href="tel:+553135550114">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          (31) 3555-0114
+        </a>
+      </nav>
+
+      <div class="hero-body">
+        <div class="hero-copy">
+          <h1>Sua empresa em dia,<br>do CNPJ ao <span class="hl">lucro.</span></h1>
+          <div class="hero-lead">
+            <p>Somos um escritório de contabilidade para quem empreende de verdade. Cuidamos de impostos, folha e obrigações enquanto você cuida de crescer — com um contador de verdade do seu lado, não um robô de e-mail.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#contato">Falar com um contador</a>
+            <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <!-- coluna/balanço estilizado: motivo de "meridiano" + colunas de balancete -->
+          <svg viewBox="0 0 300 340" class="hero-svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="col" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#E9E2CF"/>
+                <stop offset="1" stop-color="#B9B196"/>
+              </linearGradient>
+            </defs>
+            <!-- linhas de balancete ao fundo -->
+            <g stroke="rgba(200,162,75,0.18)" stroke-width="1">
+              <line x1="20" y1="70" x2="280" y2="70"/>
+              <line x1="20" y1="110" x2="280" y2="110"/>
+              <line x1="20" y1="150" x2="280" y2="150"/>
+              <line x1="20" y1="190" x2="280" y2="190"/>
+              <line x1="20" y1="230" x2="280" y2="230"/>
+              <line x1="20" y1="270" x2="280" y2="270"/>
+            </g>
+            <!-- colunas crescentes (barras de crescimento) -->
+            <g>
+              <rect x="60"  y="200" width="34" height="90"  rx="3" fill="url(#col)" opacity="0.55"/>
+              <rect x="110" y="160" width="34" height="130" rx="3" fill="url(#col)" opacity="0.7"/>
+              <rect x="160" y="120" width="34" height="170" rx="3" fill="url(#col)" opacity="0.85"/>
+              <rect x="210" y="80"  width="34" height="210" rx="3" fill="#C8A24B"/>
+            </g>
+            <!-- seta de tendência -->
+            <path d="M60 210 L120 175 L170 135 L228 92" fill="none" stroke="#F5F2EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M228 92 l-16 2 m16 -2 l-3 16" fill="none" stroke="#F5F2EA" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ STATS (faixa clara sobreposta) ============ -->
+    <section class="stats" aria-label="Números do escritório">
+      <div class="stats-inner" id="statsBar">
+        <div class="stat">
+          <span class="stat-num" data-target="12" data-suffix="">0</span>
+          <span class="stat-label">Anos de estrada</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="480" data-suffix="+">0</span>
+          <span class="stat-label">Empresas atendidas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="98" data-suffix="%">0</span>
+          <span class="stat-label">Entregas no prazo</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="7" data-prefix="R$ " data-suffix=" mi">0</span>
+          <span class="stat-label">Economizados em tributos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS (claro) ============ -->
+    <section class="areas" id="servicos">
+      <p class="kicker">NOSSAS ESPECIALIDADES <span class="kicker-line"></span></p>
+      <h2 class="areas-title">Contabilidade completa para cada<br>fase do seu negócio</h2>
+
+      <div class="areas-grid">
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          </span>
+          <h3>Abertura de empresa</h3>
+          <p>Do CNPJ ao alvará, cuidamos de todo o registro e do enquadramento tributário ideal para você já começar pagando menos.</p>
+        </article>
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h16v16H4zM8 4v16M4 9h4M4 14h4"/></svg>
+          </span>
+          <h3>Contabilidade consultiva</h3>
+          <p>Balancetes que você entende e relatórios mensais com leitura de indicadores — números viram decisão, não papelada.</p>
+        </article>
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 3h6v3H9zM9 12l2 2 4-4"/></svg>
+          </span>
+          <h3>Folha de pagamento</h3>
+          <p>Admissões, férias, rescisões e eSocial em dia. Sua equipe paga em dia e você livre de multas trabalhistas.</p>
+        </article>
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <h3>Planejamento tributário</h3>
+          <p>Analisamos Simples, Presumido e Real para encontrar, dentro da lei, o caminho que deixa mais dinheiro no seu caixa.</p>
+        </article>
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+          </span>
+          <h3>Imposto de Renda</h3>
+          <p>Declaração de PF e PJ sem sustos, com apuração revisada duas vezes e foco em restituir o que é seu por direito.</p>
+        </article>
+        <article class="area-card">
+          <span class="area-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>
+          </span>
+          <h3>BPO Financeiro</h3>
+          <p>Contas a pagar e receber, conciliação e fluxo de caixa terceirizados — sua rotina financeira roda sem você.</p>
+        </article>
+      </div>
+
+      <div class="areas-foot">
+        <a class="btn btn-dark" href="#contato">Quero um diagnóstico gratuito</a>
+      </div>
+    </section>
+
+    <!-- ============ POR QUE NÓS (escuro, com imagem/gráfico) ============ -->
+    <section class="why" id="porque">
+      <div class="why-grid">
+        <div class="why-copy">
+          <p class="kicker light"><span class="kicker-line left"></span> POR QUE A MERIDIANO</p>
+          <h2>Contador não é custo.<br>É quem protege o seu lucro.</h2>
+          <p class="why-sub">A gente troca o contador que só manda boleto por um parceiro que senta com você, explica os números e antecipa problema antes de virar multa.</p>
+
+          <div class="why-list">
+            <div class="why-item">
+              <span class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></span>
+              <div>
+                <h4>Contador dedicado</h4>
+                <p>Você fala sempre com a mesma pessoa, que conhece o seu negócio pelo nome — não com um protocolo.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span>
+              <div>
+                <h4>Resposta em 24h</h4>
+                <p>Dúvida de imposto ou nota fiscal travada? Retorno garantido em até um dia útil, por WhatsApp.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 1 3 5v6c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V5z"/></svg></span>
+              <div>
+                <h4>Zero surpresa na malha fina</h4>
+                <p>Revisão dupla em cada obrigação e alerta de prazos para você nunca mais pagar multa por atraso.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <span class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 3v18h18M18 9l-5 5-3-3-4 4"/></svg></span>
+              <div>
+                <h4>Foco em economia legal</h4>
+                <p>Revisamos seu regime tributário todo ano para garantir que você não pague um centavo a mais.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="why-panel" aria-hidden="true">
+          <div class="ledger">
+            <div class="ledger-head">
+              <span>DEMONSTRATIVO</span>
+              <span class="ledger-badge">2025</span>
+            </div>
+            <div class="ledger-row"><span>Receita bruta</span><span class="pos">R$ 842.500</span></div>
+            <div class="ledger-row"><span>Deduções</span><span>-R$ 61.300</span></div>
+            <div class="ledger-row"><span>Tributos (regime atual)</span><span>-R$ 98.100</span></div>
+            <div class="ledger-row alt"><span>Tributos (otimizado)</span><span class="pos">-R$ 71.400</span></div>
+            <div class="ledger-total">
+              <span>Economia no ano</span>
+              <span class="pos big">+ R$ 26.700</span>
+            </div>
+            <div class="ledger-bars">
+              <div class="lbar"><span style="height:78%"></span><em>Antes</em></div>
+              <div class="lbar"><span style="height:56%" class="good"></span><em>Depois</em></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPE (claro) ============ -->
+    <section class="team" id="time">
+      <p class="kicker center">NOSSO TIME <span class="kicker-line"></span></p>
+      <h2 class="team-title">Gente que fala a sua língua,<br>não só a da Receita</h2>
+
+      <div class="team-grid">
+        <article class="member">
+          <div class="member-photo" data-initials="RA" style="--a:#12332A;--b:#0F1E1A"></div>
+          <h3>Renata Aguiar</h3>
+          <p>Sócia-diretora · CRC-MG</p>
+        </article>
+        <article class="member">
+          <div class="member-photo" data-initials="TL" style="--a:#1c3f34;--b:#12332A"></div>
+          <h3>Tiago Lemos</h3>
+          <p>Especialista tributário</p>
+        </article>
+        <article class="member">
+          <div class="member-photo" data-initials="CF" style="--a:#243a33;--b:#14261f"></div>
+          <h3>Carla Freitas</h3>
+          <p>Departamento pessoal</p>
+        </article>
+        <article class="member">
+          <div class="member-photo" data-initials="MS" style="--a:#1a352c;--b:#0f221c"></div>
+          <h3>Murilo Sá</h3>
+          <p>Consultoria financeira</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTO (escuro) ============ -->
+    <section class="quote" id="depoimentos">
+      <div class="quote-inner">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <div class="quote-body">
+          <p class="kicker light">O QUE DIZEM NOSSOS CLIENTES</p>
+          <blockquote id="quoteText">
+            Troquei de contador depois de tomar uma multa boba e nunca mais olhei pra trás. A Meridiano me mostrou que eu pagava imposto demais no regime errado — a mudança pagou o honorário do ano inteiro em dois meses.
+          </blockquote>
+          <div class="quote-person">
+            <div class="quote-avatar" data-initials="PW" id="quoteAvatar"></div>
+            <div>
+              <strong id="quoteName">Priscila Werneck</strong>
+              <span id="quoteRole">Fundadora · Ateliê Werneck Design</span>
+            </div>
+          </div>
+          <div class="quote-nav">
+            <button class="qbtn" id="quotePrev" aria-label="Depoimento anterior">&larr;</button>
+            <button class="qbtn" id="quoteNext" aria-label="Próximo depoimento">&rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO (escuro) ============ -->
+    <section class="contact" id="contato">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <h2>Vamos organizar<br>a sua contabilidade?</h2>
+          <p class="contact-sub">Conte em uma linha o que você precisa. Um contador de verdade responde em até 24h úteis — sem robô, sem enrolação.</p>
+
+          <ul class="contact-list">
+            <li>
+              <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div><span class="contact-k">Telefone</span>(31) 3555-0114 · WhatsApp (31) 99876-4402</div>
+            </li>
+            <li>
+              <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 4h16v16H4zM4 6l8 6 8-6"/></svg></span>
+              <div><span class="contact-k">E-mail</span>contato@meridianocontabil.com.br</div>
+            </li>
+            <li>
+              <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><span class="contact-k">Escritório</span>Av. Getúlio Vargas, 1400 · Savassi, Belo Horizonte/MG</div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field-row">
+            <label class="field">
+              <span>Nome</span>
+              <input type="text" name="nome" required>
+            </label>
+            <label class="field">
+              <span>Empresa (ou "ainda vou abrir")</span>
+              <input type="text" name="empresa">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>WhatsApp</span>
+              <input type="tel" name="telefone" required>
+            </label>
+            <label class="field">
+              <span>E-mail</span>
+              <input type="email" name="email" required>
+            </label>
+          </div>
+          <label class="field">
+            <span>O que você precisa?</span>
+            <select name="assunto">
+              <option>Abrir empresa</option>
+              <option>Trocar de contador</option>
+              <option>Planejamento tributário</option>
+              <option>Folha de pagamento</option>
+              <option>Imposto de Renda</option>
+              <option>Outro assunto</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Conte um pouco mais</span>
+            <textarea name="mensagem" rows="3"></textarea>
+          </label>
+          <button type="submit" class="btn btn-gold btn-block">Enviar e receber retorno em 24h</button>
+          <p class="form-note">Ao enviar, seus dados são usados apenas para este contato, conforme a LGPD.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ RODAPÉ ============ -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#inicio">
+            <svg class="brand-mark" width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26V6h6l8 12V6h6v20h-6l-8-12v12z" fill="currentColor"/></svg>
+            <span class="brand-name">MERIDIANO<em>contábil</em></span>
+          </a>
+          <p>Contabilidade consultiva para quem empreende. CRC-MG 2 4187/O-3.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#porque">Por que nós</a>
+          <a href="#time">Equipe</a>
+        </div>
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <a href="#servicos">Abertura de empresa</a>
+          <a href="#servicos">Planejamento tributário</a>
+          <a href="#servicos">Folha de pagamento</a>
+          <a href="#servicos">BPO Financeiro</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <a href="tel:+553135550114">(31) 3555-0114</a>
+          <a href="mailto:contato@meridianocontabil.com.br">contato@meridianocontabil.com.br</a>
+          <span class="footer-plain">Seg–Sex · 08h às 18h</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Meridiano Contábil. Todos os direitos reservados.</span>
+        <div class="footer-social" aria-label="Redes sociais">
+          <a href="#contato" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#contato" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.5M12 17v-4a2 2 0 0 1 4 0v4"/></svg></a>
+          <a href="#contato" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
