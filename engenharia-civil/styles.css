@@ -199,13 +199,11 @@ h1, h2, h3 {
   padding: 80px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
 }
 .contato-copy h2 { color: #F6F4EF; font-size: clamp(26px, 3.2vw, 36px); margin-bottom: 14px; }
-.contato-copy p { color: rgba(246,244,239,0.72); max-width: 34ch; margin-bottom: 22px; }
-.whatsapp-link { display: inline-flex; align-items: center; gap: 8px; color: #DE6A38; font-weight: 500; font-size: 14.5px; }
-.whatsapp-link:hover { text-decoration: underline; }
+.contato-copy p { color: rgb(255, 255, 255); max-width: 34ch; margin-bottom: 22px; }
 .form-card { background: #F6F4EF; border-radius: 8px; padding: 34px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
 .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group label { font-size: 12px; color: #8B939B; letter-spacing: .03em; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } 
+.form-group label { font-size: 12px; color: #8B939B; letter-spacing: .03em; } 
 .form-group input, .form-group textarea {
   border: none; border-bottom: 1px solid rgba(28,34,39,0.14); background: transparent;
   padding: 8px 2px; font-family: 'Inter', sans-serif; font-size: 14.5px; color: #1C2227; resize: vertical;

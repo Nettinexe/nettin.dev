@@ -150,6 +150,36 @@ h1, h2, h3, .brand-name, .faq-title, .bio-name, .ghost {
   color: #9D9184;
 }
 
+/* Fotos reais dentro dos retratos: preencher o quadro sem esticar.
+   position:absolute + inset:0 faz a foto ocupar 100% da caixa do
+   pai (mesmo truque de "foto de capa") — usar apenas width/height:100%
+   aqui não é confiável porque o .portrait só tem min-height, e um
+   filho flex com porcentagem de altura não enxerga isso como uma
+   altura "definida". object-fit:cover então recorta mantendo a
+   proporção original da foto, sem esticar; object-position escolhe
+   qual parte da foto aparece (aqui, damos mais peso à parte de cima
+   para manter o rosto enquadrado). */
+.portrait img,
+.split-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+}
+
+/* A seção "Sobre" usa a foto direto dentro de .split-photo, sem
+   .portrait — por isso ela também precisa de uma altura própria
+   para o object-fit ter um quadro de verdade para preencher. */
+.split-photo {
+  position: relative;
+  min-height: 460px;
+  overflow: hidden;
+  background: linear-gradient(200deg, #2A2117, #181209);
+}
+
 /* ---------- Seções ---------- */
 .section {
   position: relative;
