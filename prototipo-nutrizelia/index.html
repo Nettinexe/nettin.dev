@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Zélia Helena | Nutricionista Clínica em Juiz de Fora e On-line</title>
+<meta name="description" content="Acompanhamento nutricional para mulheres que desejam cuidar da saúde, melhorar hábitos e conduzir o emagrecimento de forma possível e sustentável. Atendimento em Juiz de Fora e on-line.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Zélia Helena — Nutrição Clínica">
+<meta property="og:title" content="Zélia Helena | Nutricionista Clínica em Juiz de Fora e On-line">
+<meta property="og:description" content="Acompanhamento nutricional para mulheres que desejam cuidar da saúde, melhorar hábitos e conduzir o emagrecimento de forma possível e sustentável.">
+<meta property="og:image" content="assets/zelia-hero.webp">
+<!-- CANONICAL: adicionar somente quando a URL real do site for definida
+<link rel="canonical" href="[INSERIR URL REAL]"> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   SISTEMA VISUAL
+   ========================================================== */
+:root{
+  --color-background:#F7F3EE;
+  --color-surface:#EFE6DD;
+  --color-surface-light:#FCFAF7;
+  --color-primary:#74464F;
+  --color-secondary:#B77B80;
+  --color-accent:#B49A5A;
+  --color-text:#292625;
+  --color-text-soft:#6E6662;
+  --color-border:rgba(116,70,79,.16);
+  --color-white:#FFFFFF;
+  --color-ink:#2E2422;
+
+  --font-display:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-body:"Manrope","Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+
+  --step--1:clamp(.78rem,.75rem + .15vw,.86rem);
+  --step-0:clamp(.98rem,.94rem + .2vw,1.06rem);
+  --step-1:clamp(1.12rem,1.05rem + .35vw,1.28rem);
+  --step-2:clamp(1.5rem,1.3rem + .9vw,2rem);
+  --step-3:clamp(1.95rem,1.55rem + 1.8vw,3.05rem);
+  --step-4:clamp(2.4rem,1.75rem + 2.9vw,4.25rem);
+
+  --space-1:.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2.25rem;
+  --space-5:3.25rem; --space-6:4.5rem;
+  --section-y:clamp(4.25rem,8vw,7.75rem);
+  --shell:1220px;
+  --radius-s:4px; --radius-m:10px; --radius-pill:999px;
+  --shadow-soft:0 18px 40px -28px rgba(41,38,37,.45);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{
+  margin:0;background:var(--color-background);color:var(--color-text);
+  font-family:var(--font-body);font-size:var(--step-0);line-height:1.72;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.14;letter-spacing:-.005em;margin:0}
+p{margin:0 0 var(--space-2)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:2px}
+
+.shell{width:min(100% - 2.5rem,var(--shell));margin-inline:auto}
+.band{padding-block:var(--section-y);position:relative}
+.band--surface{background:var(--color-surface)}
+.band--light{background:var(--color-surface-light)}
+.band--deep{background:var(--color-primary);color:var(--color-surface-light)}
+.band--ink{background:var(--color-ink);color:var(--color-surface-light)}
+
+.eyebrow{
+  font-size:var(--step--1);font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--color-secondary);margin:0 0 var(--space-2);display:flex;align-items:center;gap:.75rem;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--color-accent);flex:none}
+.eyebrow--center{justify-content:center}
+.title{font-size:var(--step-3)}
+.title--xl{font-size:var(--step-4);line-height:1.06}
+.title--sm{font-size:var(--step-2)}
+.lede{font-size:var(--step-1);color:var(--color-text-soft);line-height:1.66;max-width:60ch}
+.soft{color:var(--color-text-soft)}
+.measure{max-width:62ch}
+
+/* Botões ------------------------------------------------- */
+.btn-z{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:54px;padding:.9rem 1.9rem;border-radius:var(--radius-pill);
+  font-family:var(--font-body);font-size:var(--step--1);font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .35s var(--ease),background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.btn-z--primary{background:var(--color-primary);color:var(--color-surface-light);box-shadow:0 14px 26px -18px rgba(116,70,79,.9)}
+.btn-z--primary:hover{background:#5F3740;transform:translateY(-2px);color:var(--color-white)}
+.btn-z--ghost{background:transparent;color:var(--color-primary);border-color:var(--color-border)}
+.btn-z--ghost:hover{border-color:var(--color-primary);transform:translateY(-2px)}
+.btn-z--light{background:var(--color-surface-light);color:var(--color-primary)}
+.btn-z--light:hover{background:var(--color-white);transform:translateY(-2px)}
+.btn-z--outline-light{background:transparent;color:var(--color-surface-light);border-color:rgba(252,250,247,.4)}
+.btn-z--outline-light:hover{border-color:var(--color-surface-light);transform:translateY(-2px)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:var(--space-3)}
+.wa-mark{color:#25D366;flex:none}
+
+/* CTA editorial (nível 3) -------------------------------- */
+.cta-edit{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:var(--space-3);
+  font-family:var(--font-body);font-size:var(--step--1);font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--color-primary);text-decoration:none;
+}
+.cta-edit svg{transition:transform .3s var(--ease)}
+.cta-edit:hover svg{transform:translateX(5px)}
+.cta-edit--light{color:var(--color-surface-light)}
+
+/* Frase editorial ----------------------------------------- */
+.statement{
+  font-family:var(--font-display);font-size:var(--step-2);line-height:1.3;text-align:center;
+  max-width:26ch;margin-inline:auto;color:var(--color-text);
+}
+.statement em{font-style:italic;color:var(--color-primary)}
+
+/* Cabeçalho ---------------------------------------------- */
+.site-head{
+  position:sticky;top:0;z-index:60;background:rgba(247,243,238,.92);
+  backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid transparent;
+  transition:border-color .4s var(--ease),background-color .4s var(--ease);
+}
+.site-head.is-stuck{border-bottom-color:var(--color-border)}
+.head-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);min-height:78px}
+.brand{text-decoration:none;display:block;line-height:1}
+.brand__name{font-family:var(--font-display);font-size:1.5rem;color:var(--color-primary);display:block}
+.brand__role{font-size:.62rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--color-text-soft);display:block;margin-top:.35rem}
+.head-nav{display:flex;align-items:center;gap:2rem}
+.head-nav a{
+  text-decoration:none;font-size:var(--step--1);font-weight:500;letter-spacing:.04em;
+  color:var(--color-text-soft);padding:.35rem 0;position:relative;
+}
+.head-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--color-accent);transition:right .4s var(--ease)}
+.head-nav a:hover{color:var(--color-primary)}
+.head-nav a:hover::after{right:0}
+.head-cta{display:inline-flex}
+.burger{
+  display:none;width:48px;height:48px;border:1px solid var(--color-border);background:transparent;
+  border-radius:var(--radius-pill);align-items:center;justify-content:center;cursor:pointer;
+}
+.burger span{display:block;width:20px;height:1px;background:var(--color-primary);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:1px;background:var(--color-primary)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+
+.mobile-panel{
+  position:fixed;inset:0;z-index:80;background:var(--color-background);
+  padding:1.25rem;display:flex;flex-direction:column;
+  transform:translateY(-100%);visibility:hidden;transition:transform .45s var(--ease),visibility .45s;
+}
+.mobile-panel.is-open{transform:translateY(0);visibility:visible}
+.mobile-panel__top{display:flex;align-items:center;justify-content:space-between}
+.panel-close{width:48px;height:48px;border-radius:var(--radius-pill);border:1px solid var(--color-border);background:transparent;font-size:1.4rem;line-height:1;color:var(--color-primary);cursor:pointer}
+.mobile-panel nav{display:flex;flex-direction:column;gap:.25rem;margin-top:var(--space-4)}
+.mobile-panel nav a{
+  text-decoration:none;font-family:var(--font-display);font-size:1.7rem;color:var(--color-primary);
+  padding:.7rem 0;border-bottom:1px solid var(--color-border);
+}
+.mobile-panel .btn-z{margin-top:auto;width:100%}
+
+/* Composição com recortes -------------------------------- */
+.person-cutout{
+  width:100%;height:auto;object-fit:contain;position:relative;z-index:3;
+  filter:drop-shadow(0 24px 35px rgba(41,38,37,.16));
+}
+.figure-stage{position:relative;display:flex;justify-content:center}
+.deco{position:absolute;z-index:1;pointer-events:none;color:var(--color-accent)}
+.deco svg{display:block;width:100%;height:auto}
+.deco--soft{color:var(--color-secondary)}
+.blob{position:absolute;z-index:0;border-radius:50%;pointer-events:none}
+
+.tag-float{
+  position:absolute;z-index:4;background:var(--color-surface-light);
+  border:1px solid var(--color-border);border-radius:var(--radius-pill);
+  padding:.5rem 1.1rem;font-size:var(--step--1);font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--color-primary);box-shadow:var(--shadow-soft);white-space:nowrap;
+}
+
+/* HERO ---------------------------------------------------- */
+.hero{position:relative;padding-block:clamp(3rem,6vw,5.5rem) 0;overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.hero__copy{position:relative;z-index:5;padding-bottom:var(--section-y)}
+.hero__title{font-size:var(--step-4);line-height:1.04;margin-bottom:var(--space-3);max-width:16ch}
+.hero__title em{font-style:italic;color:var(--color-primary)}
+.hero__sub{max-width:48ch;margin-bottom:var(--space-3)}
+.hero__note{display:flex;align-items:center;gap:.7rem;margin-top:var(--space-4);font-size:var(--step--1);color:var(--color-text-soft);letter-spacing:.04em}
+.hero__note b{font-weight:600;color:var(--color-primary)}
+.hero__objection{
+  font-family:var(--font-display);font-style:italic;font-size:var(--step-1);
+  color:var(--color-primary);border-left:1px solid var(--color-accent);padding-left:1rem;margin:var(--space-3) 0 0;
+}
+.hero__figure{position:relative;align-self:end;min-height:clamp(360px,52vw,660px)}
+.hero__figure .person-cutout{max-height:none}
+.hero .deco--ring{width:min(92%,560px);top:6%;left:50%;transform:translateX(-50%)}
+.hero .blob--warm{width:min(78%,430px);aspect-ratio:1;background:var(--color-surface);top:14%;left:52%;transform:translateX(-50%)}
+.hero__stamp{bottom:16%;left:-2.5rem}
+.hero__stamp{
+  position:absolute;z-index:4;max-width:210px;white-space:normal;text-transform:none;
+  letter-spacing:.01em;font-family:var(--font-display);font-style:italic;font-size:1.12rem;
+  font-weight:400;line-height:1.35;text-align:left;padding:.85rem 1.25rem;
+  background:var(--color-surface-light);border:1px solid var(--color-border);
+  border-radius:var(--radius-m);color:var(--color-primary);box-shadow:var(--shadow-soft);
+}
+.hero__rule{height:1px;background:var(--color-border);margin-top:0}
+
+/* POSICIONAMENTO ----------------------------------------- */
+.stance{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.pillars{display:grid;gap:0;margin-top:var(--space-4)}
+.pillar{padding:var(--space-3) 0;border-top:1px solid var(--color-border);display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:baseline}
+.pillar:last-child{border-bottom:1px solid var(--color-border)}
+.pillar__name{font-family:var(--font-display);font-size:var(--step-2);color:var(--color-primary);min-width:8.5rem}
+.pillar__desc{margin:0;color:var(--color-text-soft)}
+
+/* MÉTODO -------------------------------------------------- */
+.method{text-align:center;overflow:hidden}
+.method__head{max-width:56ch;margin-inline:auto}
+.method__sub{font-family:var(--font-display);font-style:italic;font-size:var(--step-1);color:var(--color-secondary);margin-top:.75rem}
+.video-placeholder{
+  margin:var(--space-4) auto 0;max-width:900px;aspect-ratio:16/9;border-radius:var(--radius-m);
+  background:var(--color-surface);border:1px solid var(--color-border);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;
+}
+.video-placeholder span{font-size:var(--step--1);letter-spacing:.16em;text-transform:uppercase;color:var(--color-text-soft);font-weight:600}
+.method__text{max-width:62ch;margin:var(--space-4) auto 0;color:var(--color-text-soft)}
+.method .btn-row{justify-content:center}
+.method .deco--arc-l{width:180px;left:-40px;top:22%;opacity:.55}
+.method .deco--arc-r{width:150px;right:-30px;bottom:14%;opacity:.45}
+
+/* IDENTIFICAÇÃO ------------------------------------------- */
+.fit{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.fit__stage{position:relative;min-height:clamp(340px,44vw,540px);display:flex;align-items:flex-end;justify-content:center}
+.fit .deco--ring{width:min(90%,470px);top:8%;left:48%;transform:translateX(-50%)}
+.fit .blob--pale{width:min(72%,360px);aspect-ratio:1;background:var(--color-surface-light);top:16%;left:48%;transform:translateX(-50%)}
+.fit-list{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;gap:0}
+.fit-list li{
+  display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;
+  padding:.85rem 0;border-bottom:1px solid var(--color-border);color:var(--color-text-soft);
+}
+.fit-list li:first-child{border-top:1px solid var(--color-border)}
+.fit-list svg{margin-top:.45rem;color:var(--color-accent);flex:none}
+
+/* COMO FUNCIONA ------------------------------------------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:var(--space-5);border-top:1px solid var(--color-border)}
+.step{padding:var(--space-3) var(--space-3) var(--space-4) 0;border-right:1px solid var(--color-border);position:relative}
+.step:last-child{border-right:0}
+.step:not(:first-child){padding-left:var(--space-3)}
+.step__num{font-family:var(--font-display);font-size:clamp(2.6rem,4vw,3.8rem);line-height:1;color:var(--color-accent);opacity:.55;display:block;margin-bottom:.6rem}
+.step__name{font-size:var(--step-2);color:var(--color-primary);margin-bottom:.5rem}
+.step__desc{margin:0;color:var(--color-text-soft);font-size:.96rem}
+
+/* ÁREAS --------------------------------------------------- */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-border);border:1px solid var(--color-border);margin-top:var(--space-4)}
+.area{background:var(--color-background);padding:var(--space-3)}
+.area__icon{color:var(--color-accent);margin-bottom:.85rem}
+.area h3{font-size:1.35rem;color:var(--color-primary);margin-bottom:.4rem}
+.area p{margin:0;color:var(--color-text-soft);font-size:.95rem}
+.optional-block{
+  margin-top:var(--space-4);border:1px dashed var(--color-border);border-radius:var(--radius-m);
+  padding:var(--space-3);display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start;background:var(--color-surface-light);
+}
+.optional-block h3{font-size:1.4rem;color:var(--color-primary);margin-bottom:.4rem}
+.optional-block p{margin:0;color:var(--color-text-soft);font-size:.95rem}
+.optional-flag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--color-secondary);display:block;margin-bottom:.6rem}
+
+/* SOBRE ---------------------------------------------------- */
+.about{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about__stage{position:relative;min-height:clamp(360px,46vw,580px);display:flex;align-items:flex-end;justify-content:center}
+.about .deco--ring{width:min(88%,460px);top:10%;left:50%;transform:translateX(-50%)}
+.about .blob--warm{width:min(70%,350px);aspect-ratio:1;background:var(--color-surface);top:18%;left:50%;transform:translateX(-50%)}
+.about__tags{position:absolute;inset:0;z-index:4;pointer-events:none}
+.about__tags .tag-float{pointer-events:auto}
+.tag-float--a{top:13%;left:-.5rem}
+.tag-float--b{top:46%;right:-.5rem}
+.tag-float--c{bottom:12%;left:1.5rem}
+.confirmed-list{list-style:none;margin:var(--space-3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.confirmed-list li{
+  display:flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:var(--radius-pill);
+  background:var(--color-surface);font-size:var(--step--1);font-weight:600;color:var(--color-primary);
+}
+.confirmed-list svg{color:var(--color-accent);flex:none}
+
+/* PROVA SOCIAL --------------------------------------------- */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:var(--space-4)}
+.voice{background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:var(--radius-m);padding:var(--space-3);display:flex;flex-direction:column;position:relative}
+.voice__quote{font-family:var(--font-display);font-size:3.2rem;line-height:1;color:var(--color-accent);opacity:.5;display:block;margin-bottom:.25rem}
+.voice p{font-family:var(--font-display);font-size:1.2rem;line-height:1.5;color:var(--color-text);flex:1;margin:0}
+
+/* FAQ ------------------------------------------------------ */
+.faq-wrap{max-width:840px;margin-inline:auto}
+.accordion{--bs-accordion-bg:transparent;--bs-accordion-border-color:var(--color-border);--bs-accordion-border-radius:0;--bs-accordion-inner-border-radius:0;--bs-accordion-btn-focus-box-shadow:none;--bs-accordion-active-bg:transparent;--bs-accordion-active-color:var(--color-primary);--bs-accordion-btn-padding-x:0;--bs-accordion-btn-padding-y:1.25rem;--bs-accordion-body-padding-x:0;--bs-accordion-body-padding-y:0 1.5rem}
+.accordion-item{border-left:0;border-right:0;border-top:0}
+.accordion-item:first-of-type{border-top:1px solid var(--color-border)}
+.accordion-button{font-family:var(--font-display);font-size:1.35rem;color:var(--color-text);box-shadow:none!important}
+.accordion-button:not(.collapsed){color:var(--color-primary)}
+.accordion-button::after{width:1rem;height:1rem;background-size:1rem}
+.accordion-body{color:var(--color-text-soft);max-width:66ch;padding-bottom:1.5rem}
+
+/* CONVERSÃO ------------------------------------------------ */
+.convert{overflow:hidden}
+.convert__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.convert .title{color:var(--color-surface-light);max-width:18ch}
+.convert .lede{color:rgba(252,250,247,.78)}
+.convert .eyebrow{color:var(--color-accent)}
+.convert .eyebrow::before{background:var(--color-accent)}
+.convert__aside{display:flex;flex-direction:column;gap:var(--space-3)}
+.convert__hint{font-size:var(--step--1);color:rgba(252,250,247,.6);margin:0}
+.convert__figure{max-width:220px;margin-top:var(--space-2)}
+.convert__figure .person-cutout{filter:drop-shadow(0 20px 30px rgba(0,0,0,.35))}
+.lead-form{background:var(--color-surface-light);border-radius:var(--radius-m);padding:clamp(1.4rem,3vw,2.25rem);box-shadow:0 30px 60px -40px rgba(41,38,37,.75)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:var(--step--1);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:.45rem}
+.field input,.field select{
+  width:100%;min-height:52px;padding:.75rem 1rem;border:1px solid var(--color-border);
+  border-radius:var(--radius-s);background:var(--color-white);color:var(--color-text);
+  font-family:var(--font-body);font-size:1rem;transition:border-color .3s var(--ease)
+}
+.field input:focus,.field select:focus{border-color:var(--color-primary);outline:none;box-shadow:0 0 0 3px rgba(116,70,79,.12)}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2374464F' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.field .err{display:block;min-height:1.05rem;font-size:.78rem;color:#9B3B4A;margin-top:.3rem}
+.field.is-invalid input,.field.is-invalid select{border-color:#9B3B4A}
+.lead-form .btn-z{width:100%}
+.form-status{font-size:var(--step--1);color:var(--color-text-soft);margin:.9rem 0 0;text-align:center;min-height:1.4rem}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.privacy-note{font-size:.78rem;color:var(--color-text-soft);text-align:center;margin:.6rem 0 0;line-height:1.5}
+
+/* RODAPÉ --------------------------------------------------- */
+.site-foot{background:var(--color-ink);color:rgba(252,250,247,.7);border-top:1px solid rgba(252,250,247,.1);padding-block:var(--space-5) var(--space-3)}
+.site-foot .brand__name{color:var(--color-surface-light)}
+.site-foot .brand__role{color:rgba(252,250,247,.5)}
+.site-foot .soft{color:rgba(252,250,247,.65)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:var(--space-4)}
+.foot-title{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--color-accent);margin-bottom:.9rem}
+.foot-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.92rem;color:rgba(252,250,247,.7)}
+.foot-list a{text-decoration:none;color:rgba(252,250,247,.7);transition:color .3s var(--ease)}
+.foot-list a:hover{color:var(--color-surface-light)}
+.foot-base{margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid rgba(252,250,247,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;font-size:.8rem;color:rgba(252,250,247,.55)}
+.foot-base a{color:var(--color-surface-light);text-decoration:none}
+
+/* Revelação (só ativa com JS) ------------------------------ */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal-img{opacity:0;transform:translateY(28px) scale(.985);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .reveal.is-in,.js .reveal-img.is-in{opacity:1;transform:none}
+.js .reveal[data-delay="1"]{transition-delay:.1s}
+.js .reveal[data-delay="2"]{transition-delay:.2s}
+.js .reveal[data-delay="3"]{transition-delay:.3s}
+
+/* ==========================================================
+   RESPONSIVO
+   ========================================================== */
+@media (max-width:1100px){
+  .head-nav{gap:1.35rem}
+  .hero__stamp{left:-1rem;max-width:180px;font-size:1rem}
+}
+@media (max-width:991px){
+  .head-nav,.head-cta{display:none}
+  .burger{display:inline-flex}
+  .hero__grid,.stance,.fit,.about,.convert__grid{grid-template-columns:1fr}
+  .hero__copy{padding-bottom:var(--space-4)}
+  .hero__figure{order:2;min-height:auto;margin-top:var(--space-3)}
+  .hero__title{max-width:none}
+  .fit__stage,.about__stage{order:2;margin-top:var(--space-3);min-height:auto}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step{border-bottom:1px solid var(--color-border)}
+  .step:nth-child(2n){border-right:0}
+  .step:nth-child(odd){padding-left:0}
+  .step:nth-child(even){padding-left:var(--space-3)}
+  .areas{grid-template-columns:repeat(2,1fr)}
+  .voices{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  html{scroll-padding-top:80px}
+  .btn-row{flex-direction:column}
+  .btn-row .btn-z{width:100%}
+  .person-cutout{max-height:60vh;width:auto;margin-inline:auto}
+  .figure-stage{width:100%;flex-wrap:wrap;justify-content:center}
+  .hero{padding-top:var(--space-3)}
+  .hero__stamp{position:static;max-width:none;width:100%;margin-top:var(--space-3);text-align:center;box-shadow:none;inset:auto}
+  .hero .deco--ring{width:100%;top:12%}
+  .hero .blob--warm,.fit .blob--pale,.about .blob--warm{width:74%;top:20%}
+  .method .deco--arc-l,.method .deco--arc-r{display:none}
+  .about .tag-float{position:static;box-shadow:none;inset:auto}
+  .about__tags{position:static;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:var(--space-3);width:100%}
+  .about__stage{flex-wrap:wrap}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;padding-left:0!important}
+  .areas{grid-template-columns:1fr}
+  .pillar{grid-template-columns:1fr;gap:.35rem}
+  .foot-grid{grid-template-columns:1fr}
+  .optional-block{grid-template-columns:1fr}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .js .reveal,.js .reveal-img{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ===================== CABEÇALHO ===================== -->
+<header class="site-head" id="siteHead">
+  <div class="shell head-inner">
+    <a class="brand" href="#inicio" aria-label="Zélia Helena — Nutrição Clínica, início">
+      <span class="brand__name">Zélia Helena</span>
+      <span class="brand__role">Nutrição Clínica</span>
+    </a>
+
+    <nav class="head-nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#acompanhamento">Acompanhamento</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#feedbacks">Feedbacks</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+
+    <a class="btn-z btn-z--ghost head-cta" href="#" data-wa data-event="whatsapp_click">
+      <svg class="wa-mark" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.19 8.19 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      WhatsApp
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="mobile-panel__top">
+    <span class="brand"><span class="brand__name">Zélia Helena</span><span class="brand__role">Nutrição Clínica</span></span>
+    <button class="panel-close" id="panelClose" type="button" aria-label="Fechar menu">&times;</button>
+  </div>
+  <nav aria-label="Navegação mobile">
+    <a href="#inicio">Início</a>
+    <a href="#acompanhamento">Acompanhamento</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#feedbacks">Feedbacks</a>
+    <a href="#duvidas">Dúvidas</a>
+  </nav>
+  <a class="btn-z btn-z--primary" href="#contato">Quero entender meu acompanhamento</a>
+</div>
+
+<main>
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <div class="shell">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Nutrição clínica para mulheres</p>
+        <h1 class="hero__title reveal" data-delay="1">Emagreça com estratégia, sem transformar sua alimentação em uma <em>prisão</em>.</h1>
+        <p class="lede hero__sub reveal" data-delay="2">Acompanhamento nutricional presencial em Juiz de Fora e on-line, com uma estratégia personalizada para sua rotina, seus objetivos e sua relação com a comida.</p>
+
+        <div class="btn-row reveal" data-delay="2">
+          <a class="btn-z btn-z--primary" href="#contato" data-event="primary_cta_click">Quero entender meu acompanhamento</a>
+          <a class="btn-z btn-z--ghost" href="#" data-wa data-event="whatsapp_click">
+            <svg class="wa-mark" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.19 8.19 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+            Falar pelo WhatsApp
+          </a>
+        </div>
+
+        <p class="hero__objection reveal" data-delay="3">Uma alimentação possível, construída para a sua vida real.</p>
+
+        <p class="hero__note reveal" data-delay="3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b>Presencial em Juiz de Fora</b> &nbsp;•&nbsp; Atendimento on-line</span>
+        </p>
+      </div>
+
+      <div class="hero__figure figure-stage">
+        <!-- elementos gráficos abstratos: arco contínuo = processo e constância -->
+        <span class="blob blob--warm" aria-hidden="true"></span>
+        <span class="deco deco--ring" aria-hidden="true">
+          <svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="200" cy="200" r="190" stroke-dasharray="820 380" stroke-linecap="round" opacity=".7"/>
+            <circle cx="200" cy="200" r="158" stroke-dasharray="500 500" stroke-linecap="round" opacity=".38"/>
+            <path d="M42 300c60-40 110 30 175-10s90-120 145-120" opacity=".3"/>
+          </svg>
+        </span>
+
+        <img class="person-cutout reveal-img" src="foto-hero.svg" alt="Zélia Helena, nutricionista clínica, em pé, retrato de corpo inteiro" width="900" height="1200" fetchpriority="high" decoding="async">
+
+        <p class="hero__stamp reveal" data-delay="3">Nutrição possível para a vida real.</p>
+      </div>
+    </div>
+    <div class="hero__rule"></div>
+  </div>
+</section>
+
+<!-- ===================== POSICIONAMENTO ===================== -->
+<section class="band band--light">
+  <div class="shell stance">
+    <div>
+      <p class="eyebrow reveal">Uma outra forma de cuidar</p>
+      <h2 class="title reveal" data-delay="1">Cuidar da sua alimentação não precisa significar abrir mão da sua vida.</h2>
+    </div>
+    <div>
+      <p class="lede reveal" data-delay="1">Uma rotina saudável pode incluir o almoço de domingo, o bolo feito pela família, uma refeição fora do planejamento e os momentos que tornam a vida especial. O acompanhamento nutricional deve ajudar você a fazer escolhas com mais consciência — e não viver com medo ou culpa por comer.</p>
+
+      <div class="pillars">
+        <div class="pillar reveal" data-delay="1">
+          <span class="pillar__name">Estratégia</span>
+          <p class="pillar__desc">Orientações adaptadas aos seus objetivos, necessidades e rotina.</p>
+        </div>
+        <div class="pillar reveal" data-delay="2">
+          <span class="pillar__name">Equilíbrio</span>
+          <p class="pillar__desc">Uma alimentação saudável sem transformar cada refeição em uma regra.</p>
+        </div>
+        <div class="pillar reveal" data-delay="3">
+          <span class="pillar__name">Constância</span>
+          <p class="pillar__desc">Hábitos possíveis de manter mesmo depois que a motivação diminui.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MÉTODO ===================== -->
+<section class="band method" id="acompanhamento">
+  <span class="deco deco--arc-l" aria-hidden="true">
+    <svg viewBox="0 0 200 400" fill="none" stroke="currentColor" stroke-width="1"><path d="M190 10C60 90 20 190 40 280s90 90 150 110"/></svg>
+  </span>
+  <span class="deco deco--arc-r deco--soft" aria-hidden="true">
+    <svg viewBox="0 0 200 400" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 390C140 310 180 210 160 120S70 30 10 10"/></svg>
+  </span>
+
+  <div class="shell">
+    <div class="method__head">
+      <p class="eyebrow eyebrow--center reveal">O acompanhamento</p>
+      <h2 class="title reveal" data-delay="1">Um acompanhamento construído para você.</h2>
+      <p class="method__sub reveal" data-delay="1">Não existe uma única alimentação ideal para todas as pessoas.</p>
+    </div>
+
+    <!-- ESPAÇO RESERVADO PARA VÍDEO: substituir por vídeo real da profissional -->
+    <div class="video-placeholder reveal" data-delay="2">
+      <span>Inserir vídeo de apresentação</span>
+    </div>
+
+    <p class="method__text reveal" data-delay="2">O acompanhamento começa com a compreensão da sua história, rotina, dificuldades, preferências e objetivos. A partir disso, é construída uma estratégia nutricional personalizada, que poderá ser ajustada ao longo do processo.</p>
+
+    <a class="cta-edit reveal" data-delay="3" href="#contato" data-event="primary_cta_click">
+      Conhecer o acompanhamento
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 5h13M9 1l5 4-5 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== IDENTIFICAÇÃO ===================== -->
+<section class="band band--surface">
+  <div class="shell fit">
+    <div class="fit__stage figure-stage">
+      <span class="blob blob--pale" aria-hidden="true"></span>
+      <span class="deco deco--ring deco--soft" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="200" cy="200" r="185" stroke-dasharray="640 520" stroke-linecap="round" opacity=".55"/>
+          <path d="M30 250c70 30 120-40 180-20s80 90 160 70" opacity=".3"/>
+        </svg>
+      </span>
+      <img class="person-cutout reveal-img" src="foto-identificacao.svg" alt="Zélia Helena em postura espontânea, sorrindo" width="850" height="1100" loading="lazy" decoding="async"> 
+    </div>
+
+    <div>
+      <p class="eyebrow reveal">Identificação</p>
+      <h2 class="title reveal" data-delay="1">Esse acompanhamento pode ser para você que…</h2>
+
+      <ul class="fit-list">
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Já tentou diferentes dietas, mas não conseguiu mantê-las</span></li>
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Emagreceu e depois recuperou parte do peso</span></li>
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Sente culpa ao comer fora do planejamento</span></li>
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Quer conciliar saúde, rotina e vida social</span></li>
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Deseja construir hábitos mais consistentes</span></li>
+        <li class="reveal"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg><span>Procura uma abordagem acolhedora e sem radicalismo</span></li>
+      </ul>
+
+      <div class="btn-row reveal">
+        <a class="btn-z btn-z--ghost" href="#contato" data-event="primary_cta_click">Quero começar essa mudança</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section class="band band--light">
+  <div class="shell">
+    <p class="eyebrow reveal">Como funciona</p>
+    <h2 class="title reveal measure" data-delay="1">Uma jornada construída em etapas possíveis.</h2>
+
+    <div class="steps">
+      <article class="step reveal" data-delay="1">
+        <span class="step__num">01</span>
+        <h3 class="step__name">Compreender</h3>
+        <p class="step__desc">Avaliação da sua rotina, histórico, objetivos, dificuldades e preferências.</p>
+      </article>
+      <article class="step reveal" data-delay="2">
+        <span class="step__num">02</span>
+        <h3 class="step__name">Planejar</h3>
+        <p class="step__desc">Construção de uma estratégia alimentar personalizada e aplicável.</p>
+      </article>
+      <article class="step reveal" data-delay="3">
+        <span class="step__num">03</span>
+        <h3 class="step__name">Acompanhar</h3>
+        <p class="step__desc">Análise da evolução, das dificuldades e dos resultados percebidos.</p>
+      </article>
+      <article class="step reveal" data-delay="3">
+        <span class="step__num">04</span>
+        <h3 class="step__name">Ajustar</h3>
+        <p class="step__desc">Adaptações para que o processo continue funcionando na sua realidade.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FRASE EDITORIAL ===================== -->
+<section class="band band--surface">
+  <div class="shell">
+    <p class="statement reveal">Uma alimentação saudável precisa caber na <em>vida que você realmente vive</em>.</p>
+  </div>
+</section>
+
+<!-- ===================== ÁREAS DE ACOMPANHAMENTO ===================== -->
+<!-- CONFIRMAR COM A PROFISSIONAL TODAS AS ÁREAS LISTADAS ABAIXO ANTES DA PUBLICAÇÃO -->
+<section class="band">
+  <div class="shell">
+    <p class="eyebrow reveal">Áreas de acompanhamento</p>
+    <h2 class="title reveal measure" data-delay="1">Como a nutrição pode ajudar você?</h2>
+
+    <div class="areas">
+      <article class="area reveal">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 18c4-9 12-9 16 0"/><circle cx="12" cy="7" r="2.4"/></svg>
+        <h3>Emagrecimento sustentável</h3>
+        <p>Um processo conduzido em ritmo possível, pensado para se manter depois que o objetivo é alcançado.</p>
+      </article>
+      <article class="area reveal" data-delay="1">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3 16c5 0 5-8 10-8s5 4 8 4"/><circle cx="3" cy="16" r="1.4"/><circle cx="21" cy="12" r="1.4"/></svg>
+        <h3>Mudança de hábitos</h3>
+        <p>Ajustes graduais na alimentação do dia a dia, construídos a partir do que já existe na sua rotina.</p>
+      </article>
+      <article class="area reveal" data-delay="2">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 10v10"/></svg>
+        <h3>Organização da alimentação</h3>
+        <p>Estrutura para refeições, compras e preparo, adaptada ao tempo que você realmente tem.</p>
+      </article>
+      <article class="area reveal">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3 12h4l2-5 3 10 2.5-7 1.8 4H21"/></svg>
+        <h3>Saúde e qualidade de vida</h3>
+        <p>Um olhar que vai além do peso, considerando disposição, sono, rotina e bem-estar.</p>
+      </article>
+      <article class="area reveal" data-delay="1">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.8C19 15.6 12 20 12 20Z"/></svg>
+        <h3>Relação mais equilibrada com a comida</h3>
+        <p>Menos culpa e mais consciência nas escolhas, inclusive nos momentos fora do planejamento.</p>
+      </article>
+      <article class="area reveal" data-delay="1">
+        <svg class="area__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M9 4.5c-1.7 0-3 1.3-3 3 0 .3 0 .6.1.9C4.8 8.9 4 10 4 11.3c0 1 .5 1.9 1.3 2.4-.2.4-.3.9-.3 1.3 0 1.7 1.3 3 3 3 .2 1.4 1.4 2.5 2.9 2.5H12"/><path d="M15 4.5c1.7 0 3 1.3 3 3 0 .3 0 .6-.1.9 1.3.7 2.1 1.8 2.1 3.1 0 1-.5 1.9-1.3 2.4.2.4.3.9.3 1.3 0 1.7-1.3 3-3 3-.2 1.4-1.4 2.5-2.9 2.5H12"/><path d="M12 4.5V20"/></svg>
+        <h3>Otimização Cognitiva e Foco</h3>
+        <p>Estabilização da glicemia e suporte neuroquímico para combater a fadiga mental, garantindo clareza, atenção prolongada e melhor rendimento em tarefas intelectuais complexas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="band band--light" id="sobre">
+  <div class="shell about">
+    <div class="about__stage figure-stage">
+      <span class="blob blob--warm" style="background:var(--color-surface-light)" aria-hidden="true"></span>
+      <span class="deco deco--ring" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="200" cy="200" r="188" stroke-dasharray="700 480" stroke-linecap="round" opacity=".6"/>
+          <path d="M20 210c80-60 130 40 200 0s100-120 160-140" opacity=".28"/>
+        </svg>
+      </span>
+      <img class="person-cutout reveal-img" src="foto-sobre.svg" alt="Retrato de Zélia Helena, nutricionista clínica em Juiz de Fora" width="880" height="1150" loading="lazy" decoding="async"> 
+
+      <div class="about__tags">
+        <span class="tag-float tag-float--a reveal">Acolhimento</span>
+        <span class="tag-float tag-float--b reveal" data-delay="1">Estratégia</span>
+        <span class="tag-float tag-float--c reveal" data-delay="2">Vida real</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="eyebrow reveal">Sobre a profissional</p>
+      <h2 class="title reveal" data-delay="1">Quem vai caminhar com você nessa jornada?</h2>
+      <p class="lede reveal" data-delay="1" style="margin-top:var(--space-2)">Sou Zélia Helena, nutricionista clínica, e acredito que cuidar da alimentação não deveria significar viver em guerra com a comida.</p>
+      <p class="reveal soft measure" data-delay="2">Meu trabalho é construir, junto com cada paciente, uma estratégia que respeite sua saúde, seus objetivos e sua rotina.</p>
+
+      <!-- Inserir aqui formação, CRN, especializações e tempo de atuação confirmados pela profissional -->
+      <ul class="confirmed-list reveal" data-delay="2">
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg>Nutricionista clínica</li>
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg>Atendimento em Juiz de Fora</li>
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg>Atendimento on-line</li>
+        <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8.6 6.2 12.6 14 3.8"/></svg>Abordagem personalizada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROVA SOCIAL ===================== -->
+<!-- SUBSTITUIR TODOS OS PLACEHOLDERS POR DEPOIMENTOS REAIS E AUTORIZADOS -->
+<section class="band band--surface" id="feedbacks">
+  <div class="shell">
+    <p class="eyebrow reveal">Feedbacks</p>
+    <h2 class="title reveal measure" data-delay="1">Experiências de quem escolheu cuidar de si.</h2>
+
+    <div class="voices">
+      <figure class="voice reveal" data-delay="1">
+        <span class="voice__quote" aria-hidden="true">&ldquo;</span>
+        <p>Espaço reservado para um relato real sobre a experiência com o acompanhamento.</p>
+        <!-- SUBSTITUIR POR DEPOIMENTO REAL E AUTORIZADO -->
+      </figure>
+      <figure class="voice reveal" data-delay="2">
+        <span class="voice__quote" aria-hidden="true">&ldquo;</span>
+        <p>Espaço reservado para um relato real sobre a experiência com o acompanhamento.</p>
+        <!-- SUBSTITUIR POR DEPOIMENTO REAL E AUTORIZADO -->
+      </figure>
+      <figure class="voice reveal" data-delay="3">
+        <span class="voice__quote" aria-hidden="true">&ldquo;</span>
+        <p>Espaço reservado para um relato real sobre a experiência com o acompanhamento.</p>
+        <!-- SUBSTITUIR POR DEPOIMENTO REAL E AUTORIZADO -->
+      </figure>
+    </div>
+
+    <a class="cta-edit reveal" href="#contato" data-event="primary_cta_click">
+      Quero viver essa mudança também
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 5h13M9 1l5 4-5 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="band" id="duvidas">
+  <div class="shell faq-wrap">
+    <p class="eyebrow eyebrow--center reveal">Antes de conversarmos</p>
+    <h2 class="title reveal" data-delay="1" style="text-align:center;margin-bottom:var(--space-4)">Dúvidas frequentes</h2>
+
+    <div class="accordion reveal" id="faq" data-delay="1">
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">O atendimento é presencial ou on-line?</button></h3>
+        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">As duas modalidades estão disponíveis: presencial em Juiz de Fora e on-line para pacientes de outras cidades. Você escolhe a que se encaixa melhor na sua rotina.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">Como funciona a primeira consulta?</button></h3>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">A primeira consulta é dedicada a entender sua história, rotina, preferências, dificuldades e objetivos, antes de qualquer orientação alimentar.
+        <!-- INSERIR DETALHES REAIS DA PRIMEIRA CONSULTA: duração, avaliações realizadas e o que a paciente recebe --></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">O plano alimentar é personalizado?</button></h3>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Sim. A estratégia é construída a partir da sua rotina, das suas preferências e dos seus objetivos — não existe um plano único aplicado a todas as pacientes.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">Preciso seguir uma dieta restritiva?</button></h3>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">A proposta do acompanhamento é justamente construir uma alimentação possível de manter, adaptada à sua vida. As orientações consideram o que você gosta e a realidade do seu dia a dia.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">O acompanhamento é somente para quem quer emagrecer?</button></h3>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Não. O emagrecimento é um dos objetivos possíveis, mas o acompanhamento também atende quem busca organizar a alimentação, melhorar hábitos, cuidar da saúde e manter resultados já alcançados.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">Como funcionam os retornos?</button></h3>
+        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Os retornos servem para acompanhar a evolução, entender as dificuldades que apareceram e ajustar a estratégia. Os detalhes sobre duração, frequência e investimento são apresentados durante o primeiro contato, de acordo com a modalidade de atendimento.
+        <!-- INSERIR INFORMAÇÕES REAIS: frequência dos retornos, formato e o que está incluído, quando confirmadas --></div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">Como faço para agendar?</button></h3>
+        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Você pode preencher o formulário desta página ou falar diretamente pelo WhatsApp. A conversa inicial serve para entender o que você busca e explicar como o acompanhamento funciona, incluindo valores e disponibilidade.
+        <!-- INSERIR INFORMAÇÕES REAIS SOBRE VALORES E FORMAS DE PAGAMENTO, QUANDO CONFIRMADAS --></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONVERSÃO ===================== -->
+<section class="band band--deep convert" id="contato">
+  <div class="shell convert__grid">
+    <div class="convert__aside">
+      <p class="eyebrow reveal">Primeiro passo</p>
+      <h2 class="title reveal" data-delay="1">Seu processo não precisa começar com mais uma dieta. Pode começar com uma estratégia possível.</h2>
+      <p class="lede reveal" data-delay="2">Conte um pouco sobre o que você busca e dê o primeiro passo para entender qual acompanhamento pode fazer sentido para você.</p>
+      <p class="convert__hint reveal" data-delay="2">Presencial em Juiz de Fora • Atendimento on-line</p>
+
+      <div class="convert__figure reveal-img" data-delay="3" aria-hidden="true">
+        <!-- IMAGEM 4 — CTA FINAL: inserir arquivo final para ativar
+        <img class="person-cutout" src="assets/zelia-cta.webp" alt="" width="520" height="640" loading="lazy" decoding="async"> -->
+      </div>
+    </div>
+
+    <div class="reveal" data-delay="1">
+      <!-- FORMULÁRIO DE TRIAGEM: não envia dados a servidor. Monta a mensagem e abre o WhatsApp. -->
+      <form class="lead-form" id="leadForm" novalidate>
+        <div class="field">
+          <label for="lf-nome">Seu nome</label>
+          <input type="text" id="lf-nome" name="nome" autocomplete="name" required minlength="2" placeholder="Como você gostaria de ser chamada">
+          <span class="err" id="err-nome" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="lf-whats">WhatsApp</label>
+          <input type="tel" id="lf-whats" name="whatsapp" autocomplete="tel" inputmode="tel" required placeholder="(00) 00000-0000">
+          <span class="err" id="err-whats" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="lf-modalidade">Modalidade desejada</label>
+          <select id="lf-modalidade" name="modalidade" required>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option>Presencial em Juiz de Fora</option>
+            <option>On-line</option>
+            <option>Ainda não sei</option>
+          </select>
+          <span class="err" id="err-modalidade" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="lf-objetivo">Principal objetivo</label>
+          <select id="lf-objetivo" name="objetivo" required>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option>Emagrecimento</option>
+            <option>Melhorar meus hábitos</option>
+            <option>Organizar minha alimentação</option>
+            <option>Cuidar melhor da minha saúde</option>
+            <option>Outro</option>
+          </select>
+          <span class="err" id="err-objetivo" aria-live="polite"></span>
+        </div>
+
+        <!-- honeypot anti-spam -->
+        <div class="hp" aria-hidden="true"><label for="lf-site">Não preencha este campo</label><input type="text" id="lf-site" name="site" tabindex="-1" autocomplete="off"></div>
+
+        <button class="btn-z btn-z--primary" type="submit" data-event="generate_lead">
+          <svg class="wa-mark" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.19 8.19 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Quero conversar pelo WhatsApp
+        </button>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="privacy-note">Seus dados serão utilizados apenas para iniciar o contato pelo WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <span class="brand"><span class="brand__name">Zélia Helena</span><span class="brand__role">Nutrição Clínica</span></span>
+        <p class="soft" style="margin-top:var(--space-2);max-width:34ch;font-size:.92rem">Acompanhamento nutricional para mulheres que querem cuidar da saúde de um jeito possível de manter.</p>
+      </div>
+      <div>
+        <p class="foot-title">Atendimento</p>
+        <ul class="foot-list">
+          <li>Presencial em Juiz de Fora — MG</li>
+          <li>Atendimento on-line</li>
+          <!-- Inserir aqui o CRN assim que confirmado -->
+        </ul>
+      </div>
+      <div>
+        <p class="foot-title">Contato</p>
+        <ul class="foot-list">
+          <li><a href="#" data-wa data-event="whatsapp_click">WhatsApp</a></li>
+          <!-- Inserir aqui o link real do Instagram e o telefone de contato quando confirmados
+          <li><a href="#" data-instagram>Instagram</a></li>
+          <li>Telefone</li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-base">
+      <span>&copy; <span id="year">2026</span> Zélia Helena — Nutrição Clínica. Todos os direitos reservados.</span>
+      <span>Desenvolvido por <a href="https://nettin.dev" target="_blank" rel="noopener">nettin.dev</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ---- Configuração editável ---- */
+  const whatsappNumber = "INSERIR_NUMERO_COM_DDI_E_DDD";
+  const defaultMessage = "Olá, Zélia! Conheci seu trabalho pela sua página e gostaria de entender como funciona o acompanhamento nutricional.";
+
+  const waLink = (msg) => "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg);
+
+  /* ---- Links de WhatsApp ---- */
+  document.querySelectorAll('[data-wa]').forEach(el => { el.href = waLink(defaultMessage); });
+
+  /* ---- Ano do rodapé ---- */
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* ---- Cabeçalho ---- */
+  const head = document.getElementById('siteHead');
+  const onScroll = () => head.classList.toggle('is-stuck', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- Menu mobile ---- */
+  const burger = document.getElementById('burger');
+  const panel  = document.getElementById('mobilePanel');
+  const close  = document.getElementById('panelClose');
+  const setPanel = (open) => {
+    panel.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) close.focus(); else burger.focus();
+  };
+  burger.addEventListener('click', () => setPanel(true));
+  close.addEventListener('click', () => setPanel(false));
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setPanel(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('is-open')) setPanel(false); });
+
+  /* ---- Revelação por scroll ---- */
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = document.querySelectorAll('.reveal, .reveal-img');
+  if (reduced || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+    items.forEach(el => io.observe(el));
+  }
+
+  /* ---- Formulário de triagem -> WhatsApp ---- */
+  const form = document.getElementById('leadForm');
+  const status = document.getElementById('formStatus');
+  const fields = [
+    {id:'lf-nome', err:'err-nome', msg:'Informe seu nome.', test:v => v.trim().length >= 2},
+    {id:'lf-whats', err:'err-whats', msg:'Informe um WhatsApp válido com DDD.', test:v => v.replace(/\D/g,'').length >= 10},
+    {id:'lf-modalidade', err:'err-modalidade', msg:'Selecione a modalidade desejada.', test:v => v !== ''},
+    {id:'lf-objetivo', err:'err-objetivo', msg:'Selecione seu principal objetivo.', test:v => v !== ''}
+  ];
+
+  const showError = (f, message) => {
+    const input = document.getElementById(f.id);
+    input.closest('.field').classList.toggle('is-invalid', !!message);
+    input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    document.getElementById(f.err).textContent = message || '';
+  };
+
+  fields.forEach(f => {
+    const input = document.getElementById(f.id);
+    input.addEventListener('input', () => { if (f.test(input.value)) showError(f, ''); });
+    input.addEventListener('change', () => { if (f.test(input.value)) showError(f, ''); });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // honeypot
+    if (document.getElementById('lf-site').value !== '') return;
+
+    let firstInvalid = null;
+    fields.forEach(f => {
+      const input = document.getElementById(f.id);
+      const ok = f.test(input.value);
+      showError(f, ok ? '' : f.msg);
+      if (!ok && !firstInvalid) firstInvalid = input;
+    });
+
+    if (firstInvalid) {
+      status.textContent = 'Revise os campos destacados para continuar.';
+      firstInvalid.focus();
+      return;
+    }
+
+    if (whatsappNumber.indexOf('INSERIR') === 0) {
+      status.textContent = 'Número de WhatsApp ainda não configurado nesta página.';
+      return;
+    }
+
+    const nome = document.getElementById('lf-nome').value.trim();
+    const modalidade = document.getElementById('lf-modalidade').value;
+    const objetivo = document.getElementById('lf-objetivo').value;
+    const msg = "Olá, Zélia! Meu nome é " + nome + ". Tenho interesse em atendimento " + modalidade +
+                ". Meu principal objetivo é " + objetivo + ". Gostaria de entender como funciona o acompanhamento.";
+
+    status.textContent = 'Abrindo o WhatsApp…';
+    window.open(waLink(msg), '_blank', 'noopener');
+    setTimeout(() => { status.textContent = 'Se a conversa não abrir, toque no botão do WhatsApp acima.'; }, 2500);
+  });
+
+  /* ---- Ponto de integração de mensuração ----
+     Os elementos possuem data-event (primary_cta_click, whatsapp_click, generate_lead).
+     Conectar aqui a ferramenta de análise somente quando o ID real for fornecido. */
+})();
+</script>
+</body>
+</html>
