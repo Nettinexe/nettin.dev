@@ -1,0 +1,10 @@
+# Site estático, sem build. As funções em netlify/functions usam o formato
+# moderno (ESM + `export const config`): o endpoint /api/instagram-feed e a
+# rotina agendada são declarados no próprio arquivo de cada função.
+[build]
+  publish = "."
+  command = ""
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

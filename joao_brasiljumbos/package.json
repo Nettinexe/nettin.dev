@@ -1,0 +1,11 @@
+{
+  "name": "brasil-jumbos-site",
+  "private": true,
+  "description": "Site institucional Brasil Jumbos — dependências apenas das funções serverless (Netlify).",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

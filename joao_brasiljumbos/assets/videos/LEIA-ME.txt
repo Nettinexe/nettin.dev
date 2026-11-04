@@ -1,0 +1,31 @@
+THUMBNAILS DA SEÇÃO "ÚLTIMOS VÍDEOS"
+====================================
+
+Coloque aqui as três thumbnails, em WebP:
+
+    video-01.webp   -> carta do CENTRO    (vídeo principal / mais recente)
+    video-02.webp   -> carta da ESQUERDA  (segundo vídeo)
+    video-03.webp   -> carta da DIREITA   (terceiro vídeo)
+
+Se preferir outros nomes, tudo bem: os caminhos ficam em
+data/latest-videos.js e é só apontar para os arquivos reais.
+
+FORMATO
+-------
+Use a thumbnail no formato ORIGINAL do vídeo. Ela não é cortada nem
+esticada — a carta se adapta à proporção do arquivo. Para vídeo vertical
+o normal é 9:16 (ex.: 1080×1920).
+
+Depois de salvar os arquivos, abra data/latest-videos.js e confira os
+campos `width` e `height` de cada item: eles devem bater com as dimensões
+reais da imagem. É isso que reserva o espaço certo antes do download e
+evita a página "pular" enquanto carrega.
+
+LINKS
+-----
+No mesmo arquivo, preencha o campo `url` de cada vídeo com o link da
+publicação original (Instagram, YouTube, TikTok...).
+
+Enquanto `url` estiver vazio, a carta aparece normalmente mas NÃO é
+clicável — não é gerado link morto nem href="#". Assim que o link real
+for colado, ela vira link sozinha.
