@@ -1068,6 +1068,16 @@ html.menu-open body{ overflow:hidden; }
 /* HOJE — documental secundária */
 .tl-photo--doc img{ --fx-l: 10%; --fx-r: 90%; --fy-t: 8%; --fy-b: 78%; }
 
+/* Em pilha (até 1023px) as fotos ficam centralizadas na coluna. Fica num
+   @media para não vazar para o desktop: lá cada foto tem posição própria
+   no grid (justify-self), e margin auto venceria essa posição. */
+@media (max-width: 1023px){
+  .tl-photo--record,
+  .tl-photo--archive,
+  .tl-photo--cutout,
+  .tl-photo--doc{ margin-inline: auto; }
+}
+
 /* Mobile: 2015 e HOJE saem (o <source> do <picture> já evita o download).
    O marco, o texto e a data continuam; só a foto deixa de aparecer. */
 @media (max-width: 767px){
