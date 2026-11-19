@@ -33,7 +33,10 @@ joao_brasiljumbos/
       foto1.webp            João (real) — Hero
       foto2.webp            João (real) — "Quem é João?"
       raia-potamotrygon.webp  "Um novo olhar para os peixes de rio"
-      pirarara.webp         timeline 2012
+      timeline-2012.webp … timeline-hoje.webp  fotos reais enviadas pelo João,
+                            uma por marco da linha do tempo
+      timeline-2020-recorte.webp  João + pirarara com fundo removido (alfa)
+      pirarara.webp         (não usado no momento)
       tucunare.webp         pilar 03 "O que é aquarismo jumbo?"
       pirarucu.webp         fundo de "O que você encontra"
       tumb*.webp            thumbnails do fallback estático de vídeos
@@ -46,9 +49,11 @@ joao_brasiljumbos/
     social-config.js    números de seguidores por rede (null = não exibe)
   netlify/
     lib/instagram.mjs           núcleo: API, cache, token, normalização
+    lib/social.mjs              seguidores por rede (Instagram/YouTube/Facebook/TikTok)
     functions/
       instagram-feed.mjs        GET /api/instagram-feed
-      instagram-refresh.mjs     rotina agendada (@hourly)
+      social-counts.mjs         GET /api/social-counts
+      instagram-refresh.mjs     rotina agendada (@hourly): token, feed e seguidores
 ```
 
 ## Direção de imagem (rodada de refinamento pós-aprovação)
@@ -61,9 +66,12 @@ imagem tem função narrativa — o site não é galeria.
 |---|---|---|
 | Hero | `foto1.webp` (João, recorte transparente) | rosto real do projeto |
 | 02 · Quem é João? | `foto2.webp` (João, camisa de pesca) | apresenta a pessoa |
-| 03 · Aquarismo jumbo | tucunaré | o que é um peixe jumbo de rio |
-| Timeline 2012 | pirarara | a espécie do primeiro aquário jumbo |
-| Timeline HOJE | **espaço opcional** `rotina` | João na rotina (aguarda foto) |
+| 03 · Aquarismo jumbo | tucunaré (legenda *Cichla* sp., só o gênero — pedido do João) | o que é um peixe jumbo de rio |
+| Timeline 2012 | `timeline-2012.webp` aquário com tucunarés | foto real enviada pelo João |
+| Timeline 2015 | `timeline-2015.webp` João pescando | foto real enviada pelo João |
+| Timeline 2016 | `timeline-2016.webp` grupo com camisetas Brasil Jumbos | foto real enviada pelo João |
+| Timeline 2020 | `timeline-2020-recorte.webp` João com pirarara albina (fundo removido) | foto real enviada pelo João; `timeline-2020.webp` (foto inteira) fica como reserva, não é usada |
+| Timeline HOJE | `timeline-hoje.webp` João no aquário do poraquê | foto real enviada pelo João |
 | Um novo olhar | raia de água doce | a "nova perspectiva" sobre peixes de rio |
 | O que você encontra | pirarucu, ao fundo | identidade de nicho sem disputar com a lista |
 | Acontece todos os dias | **espaço opcional** `manejo` | manejo/bastidores (aguarda foto) |
@@ -77,10 +85,44 @@ estiverem no site. Se o João enviar fotos dos peixes dele, basta substituir
 os arquivos (mesmo nome) e retirar o crédito correspondente — o ideal é que,
 com o tempo, as espécies mostradas sejam as dos aquários dele.
 
-### Espaços opcionais para fotos do João
+### Fotos da linha do tempo — um tratamento por marco
 
-Ainda não recebemos fotos dele trabalhando (manejo, aquário, pesca). Os
-dois espaços já estão desenhados no HTML (`[data-photo-slot]`) e ficam
+As cinco fotos foram enviadas pelo João (WhatsApp), na ordem dos marcos.
+Elas **não** seguem um padrão único "texto → retângulo": cada uma tem uma
+função narrativa e um tratamento (`.tl-photo--*` em `styles.css`). Cada
+figura é filha direta do grid do marco — no desktop ocupa colunas
+próprias; no mobile cai abaixo do texto.
+
+| Marco | Tratamento | Desktop | Mobile |
+|---|---|---|---|
+| 2012 | **registro** — pequeno, sem borda, fade lateral e na base, levemente dessaturado | texto col. 5–9 · foto col. 10–12 (máx. 300px) | pequena (58%, máx. 250px) |
+| 2015 | **faixa** — horizontal, nasce sob o "JF → MG" e atravessa o grid até a borda | col. 4 → borda, proporção 2.6:1, máx. 400px de altura | **oculta** |
+| 2016 | **arquivo** — passe-partout escuro, linha 1px, legenda "2016 · Brasil Jumbos" | ao lado de BRASIL / JUMBOS., col. 9–12 (máx. 320px) | contida (78%, máx. 330px) |
+| 2020 | **recorte** — João + pirarara sem fundo, flutuando no preto, glow vermelho mínimo | texto col. 5–7 · recorte col. 8 → borda (máx. 620px) | largura cheia (máx. 440px) |
+| HOJE | **documental** — secundária, fade em todas as bordas | col. 9–12 (máx. 380px) | **oculta** |
+
+- **Recorte de 2020** (`timeline-2020-recorte.webp`, 786×720, com alfa):
+  fundo removido com `rembg` (modelo `isnet-general-use`) a partir da foto
+  original, sem nenhuma alteração da pessoa ou do peixe — rosto, mãos,
+  cauda, barbatanas e barbilhões preservados. A base tem fade porque a
+  foto original cortava as pernas.
+- **2015** já vem cortada em 1280×545 (João, vara e rio inteiros).
+- **Mobile**: 2015 e HOJE não aparecem, para encurtar a página e deixar
+  2012 / 2016 / 2020 como os registros visuais. Texto e data continuam.
+  Essas duas usam `<picture>` com um `<source media="(max-width: 767px)">`
+  apontando para um GIF de 1px em data URI, então o arquivo **não é
+  baixado** no celular (só `display:none` não bastaria).
+- **Reveal**: faixa entra da direita (40px), recorte da direita com
+  `scale(.96 → 1)`, registro e arquivo revelam por uma "cortina" preta
+  (`::after`) que recolhe. Nunca usar `clip-path` na figura: um ancestral
+  100% recortado faz a `<img loading="lazy">` nunca ser baixada.
+- Os JPEGs originais do WhatsApp continuam em `assets/images/` e podem ser
+  apagados.
+
+### Espaço opcional para foto do João
+
+Ainda falta uma foto dele no manejo/bastidores. O espaço já está desenhado
+no HTML (`[data-photo-slot="manejo"]`) e fica
 **ocultos** até serem configurados em `data/site-photos.js` — sem
 placeholder, sem requisição, sem foto inventada. Para ativar: salvar o
 arquivo em `assets/images/` e preencher `src`, `alt`, `caption`, `width` e
@@ -118,7 +160,35 @@ aparecem por trás. No desktop a foto começa abaixo do header
 (`inset: var(--header-height) …`) para o cabelo nunca ficar sob a
 navegação; ajuste só `object-position` se o enquadramento novo pedir.
 
-## Como atualizar os números sociais
+## Números de impacto (raia)
+
+Fixos no HTML, atualizados a pedido do João (nov/2026): **+3 milhões** de
+seguidores somando todas as redes e **+500 milhões** de visualizações.
+Ficam em `.ray__value` (`data-target` + texto) — mude os dois juntos.
+
+## Seguidores em tempo real
+
+```
+APIs oficiais → /api/social-counts (lib/social.mjs) → cache 3 h → cards "Acompanhe"
+```
+
+O front-end pinta na hora os números fixos de `data/social-config.js` e,
+logo depois, troca cada rede que a API devolver. Cada rede liga sozinha
+quando as suas variáveis de ambiente existirem; a que não estiver
+configurada (ou falhar) fica com o número fixo. Se uma API falhar depois de
+já ter funcionado, vale o último número do cache. O YouTube aparece como
+"inscritos"; as demais, "seguidores".
+
+| Rede | O que configurar na Netlify | Observação |
+|---|---|---|
+| Instagram | nada novo — usa `INSTAGRAM_ACCESS_TOKEN` | campo `followers_count` |
+| YouTube | `YOUTUBE_API_KEY` (e opcional `YOUTUBE_CHANNEL_ID`) | API key grátis no Google Cloud; a API arredonda para 3 dígitos significativos |
+| Facebook | `FACEBOOK_PAGE_ID` + `FACEBOOK_PAGE_TOKEN` | token de Página gerado a partir de um token de usuário de longa duração não expira |
+| TikTok | `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`, `TIKTOK_REFRESH_TOKEN` | exige app na TikTok com escopo `user.info.stats` (revisão da TikTok); o refresh token renovado fica no Blobs |
+
+Para conferir: abra `/api/social-counts` no site publicado.
+
+## Números fixos de reserva
 
 Edite `data/social-config.js`. Enquanto um valor estiver `null`, o número
 correspondente não aparece no site — nenhuma métrica é inventada.
@@ -392,7 +462,7 @@ Daí saem os três tokens em `:root`:
 
 `--lh-display-flat` é usado em exatamente dois lugares, e os dois são
 seguros **por construção**, não por sorte: `BRASIL / JUMBOS.` (nome da
-marca, sem um acento sequer) e os numerais de impacto (`+2`, `+300`).
+marca, sem um acento sequer) e os numerais de impacto (`+3`, `+500`).
 
 > Se algum dia entrar um título novo com acento, ele deve usar
 > `--lh-display-xl` ou `--lh-display-md` — nunca `--lh-display-flat`.

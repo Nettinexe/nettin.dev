@@ -14,14 +14,7 @@
  *   height
  */
 window.BRASIL_JUMBOS_PHOTOS = {
-  /* Timeline › HOJE — João na rotina: aquário, alimentação, manutenção. */
-  rotina: {
-    src: "",
-    alt: "",
-    caption: "",
-    width: 1600,
-    height: 1067,
-  },
+  /* (As fotos da linha do tempo ficam fixas no index.html, uma por marco.) */
 
   /* "O Brasil Jumbos acontece todos os dias" — manejo, pesca ou bastidores. */
   manejo: {

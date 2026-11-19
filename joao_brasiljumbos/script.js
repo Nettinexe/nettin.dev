@@ -111,7 +111,7 @@
      --------------------------------------------------------------------- */
   function initReveals() {
     var targets = document.querySelectorAll(
-      "[data-reveal], [data-reveal-block], [data-reveal-left], [data-reveal-line]"
+      "[data-reveal], [data-reveal-block], [data-reveal-left], [data-reveal-line], [data-reveal-media]"
     );
     if (!targets.length) return;
 
@@ -440,16 +440,31 @@
   }
 
   /* ---------------------------------------------------------------------
-     Números de seguidores (só exibe quando configurado)
+     Números de seguidores
+       1. pinta na hora os números fixos de data/social-config.js;
+       2. busca /api/social-counts (APIs oficiais → cache) e troca só as
+          redes que vierem com número real. Rede que a API não devolver
+          continua com o número fixo. Sem Netlify (arquivo local), fica no 1.
      --------------------------------------------------------------------- */
-  function initSocialCounts() {
-    var counts = window.BRASIL_JUMBOS_SOCIAL_COUNTS || {};
+  var COUNTS_ENDPOINT = "/api/social-counts";
+
+  function paintSocialCounts(counts) {
     document.querySelectorAll("[data-social-count]").forEach(function (el) {
-      var key = el.dataset.socialCount;
-      var value = counts[key];
-      if (value === null || value === undefined) return;
-      el.textContent = new Intl.NumberFormat("pt-BR").format(value) + " seguidores";
+      var value = counts[el.dataset.socialCount];
+      if (typeof value !== "number" || !(value > 0)) return;
+      el.textContent = new Intl.NumberFormat("pt-BR").format(value) +
+        (el.dataset.socialCount === "youtube" ? " inscritos" : " seguidores");
     });
+  }
+
+  function initSocialCounts() {
+    paintSocialCounts(window.BRASIL_JUMBOS_SOCIAL_COUNTS || {});
+    if (!window.fetch || location.protocol === "file:") return;
+
+    fetch(COUNTS_ENDPOINT, { headers: { Accept: "application/json" } })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (json) { if (json && json.counts) paintSocialCounts(json.counts); })
+      .catch(function () { /* mantém os números fixos */ });
   }
 
   /* ---------------------------------------------------------------------

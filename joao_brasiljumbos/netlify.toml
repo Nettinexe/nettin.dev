@@ -1,6 +1,12 @@
 # Site estático, sem build. As funções em netlify/functions usam o formato
-# moderno (ESM + `export const config`): o endpoint /api/instagram-feed e a
-# rotina agendada são declarados no próprio arquivo de cada função.
+# moderno (ESM + `export const config`): os endpoints /api/instagram-feed e
+# /api/social-counts e a rotina agendada são declarados no próprio arquivo
+# de cada função.
+#
+# Este site vive numa PASTA do repositório (nettin.dev/joao_brasiljumbos).
+# Na Netlify: Site configuration → Build & deploy → Base directory =
+# "joao_brasiljumbos". Com isso a Netlify lê este arquivo, publica a pasta
+# e instala @netlify/blobs a partir do package.json daqui.
 [build]
   publish = "."
   command = ""

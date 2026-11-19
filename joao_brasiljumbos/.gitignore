@@ -1,3 +1,8 @@
 .env
 node_modules/
 .netlify/
+
+# Originais enviados pelo WhatsApp e foto inteira de 2020: o site usa as
+# versões WebP tratadas (timeline-*.webp). Ficam só na máquina local.
+assets/images/WhatsApp Image *.jpeg
+assets/images/timeline-2020.webp

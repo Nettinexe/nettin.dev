@@ -249,7 +249,7 @@
           <img src="assets/images/tucunare.webp" alt="Tucunaré, peixe predador de grande porte dos rios brasileiros" width="1805" height="1003" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption class="figure-caption jumbo-showcase__caption">Tucunaré <i>Cichla ocellaris</i> — predador de rio, clássico do aquarismo jumbo</figcaption>
+      <figcaption class="figure-caption jumbo-showcase__caption">Tucunaré <i>Cichla</i> sp. — predador de rio, clássico do aquarismo jumbo</figcaption>
     </figure>
   </section>
 
@@ -262,7 +262,18 @@
 
     <ol class="timeline-list">
 
-      <li class="timeline-item">
+      <!--
+        FOTOGRAFIAS DA TIMELINE — um tratamento por marco (ver README):
+          2012  registro    pequeno, ao lado do texto, fade nas bordas
+          2015  faixa       horizontal larga, nasce sob o "JF → MG"
+          2016  arquivo     contido, linha fina + legenda curta
+          2020  recorte     João + pirarara sem fundo, flutuando no preto
+          HOJE  documental  secundária, fade suave, oculta no mobile
+        Cada figura é FILHA DIRETA do grid do marco (não fica dentro do
+        bloco de texto), então ocupa colunas próprias no desktop e cai
+        para baixo do texto no mobile.
+      -->
+      <li class="timeline-item timeline-item--2012">
         <div class="container timeline-item__inner grid-12">
           <span class="timeline-item__year timeline-item__year--red" data-reveal-left>2012</span>
           <div class="timeline-item__copy" data-reveal-block>
@@ -271,10 +282,13 @@
             <p class="timeline-item__text">Em 2012, montei meu primeiro aquário jumbo. O peixe era uma pirarara.</p>
             <p class="timeline-item__text timeline-item__text--muted">Sob influência de Paulo Sérgio, da Aquarismo Jumbo, pioneiro da modalidade no Brasil, comecei a me aprofundar na criação de peixes de rio em aquário.</p>
           </div>
+          <figure class="tl-photo tl-photo--record" data-reveal-media>
+            <img src="assets/images/timeline-2012.webp" alt="Aquário jumbo com tucunarés, troncos e fundo de areia" width="415" height="407" loading="lazy" decoding="async">
+          </figure>
         </div>
       </li>
 
-      <li class="timeline-item">
+      <li class="timeline-item timeline-item--2015">
         <div class="container timeline-item__inner grid-12">
           <span class="timeline-item__year timeline-item__year--white" data-reveal-left>2015</span>
           <div class="timeline-item__copy" data-reveal-block>
@@ -283,10 +297,18 @@
             <p class="timeline-item__text timeline-item__text--muted">Com esse crescimento, o grupo passou a se chamar Aquarismo Jumbo MG.</p>
             <p class="timeline-item__shift" aria-label="De Juiz de Fora para Minas Gerais">JF <span aria-hidden="true">→</span> MG</p>
           </div>
+          <!-- Só tablet/desktop. No mobile o <source> entrega um GIF de 1px
+               (data URI) e a figura fica oculta: o arquivo nem é baixado. -->
+          <figure class="tl-photo tl-photo--strip tl-photo--no-mobile" data-reveal-media>
+            <picture>
+              <source media="(max-width: 767px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+              <img src="assets/images/timeline-2015.webp" alt="João Teixeira pescando com vara de bambu na beira de um rio" width="1280" height="545" loading="lazy" decoding="async">
+            </picture>
+          </figure>
         </div>
       </li>
 
-      <li class="timeline-item timeline-item--brand">
+      <li class="timeline-item timeline-item--brand timeline-item--2016">
         <span class="ghost-word timeline-item__ghost" aria-hidden="true">BRASIL</span>
         <div class="container timeline-item__inner grid-12">
           <span class="timeline-item__year timeline-item__year--red" data-reveal-left>2016</span>
@@ -294,10 +316,14 @@
             <h3 class="timeline-item__title timeline-item__title--giant">BRASIL<br>JUMBOS.</h3>
             <p class="timeline-item__text">Com o interesse pelo aquarismo jumbo crescendo nacionalmente, dei ao projeto um novo nome. Em 2016, nasceu o Brasil Jumbos.</p>
           </div>
+          <figure class="tl-photo tl-photo--archive" data-reveal-media>
+            <img src="assets/images/timeline-2016.webp" alt="Grupo de aquaristas vestindo camisetas do Brasil Jumbos" width="800" height="604" loading="lazy" decoding="async">
+            <figcaption class="figure-caption">2016 · Brasil Jumbos</figcaption>
+          </figure>
         </div>
       </li>
 
-      <li class="timeline-item">
+      <li class="timeline-item timeline-item--2020">
         <div class="container timeline-item__inner grid-12">
           <!-- 2020 fica SEMPRE em branco (pedido do cliente), independente da
                alternância branco/vermelho dos outros anos. -->
@@ -307,6 +333,10 @@
             <span class="timeline-item__rule" data-reveal-line aria-hidden="true"></span>
             <p class="timeline-item__text">Durante a pandemia, meu conteúdo alcançou uma nova dimensão e começou a atingir milhões de visualizações. O crescimento continuou nos anos seguintes.</p>
           </div>
+          <!-- Recorte real (fundo removido) de João + pirarara albina. -->
+          <figure class="tl-photo tl-photo--cutout" data-reveal-media>
+            <img src="assets/images/timeline-2020-recorte.webp" alt="João Teixeira segurando uma pirarara albina" width="786" height="720" loading="lazy" decoding="async">
+          </figure>
         </div>
       </li>
 
@@ -321,14 +351,14 @@
               <li>TikTok</li>
               <li>Facebook</li>
             </ul>
-            <!-- Foto real do João na rotina (aquário/manejo). Fica oculta até o
-                 arquivo ser configurado em data/site-photos.js — sem foto
-                 inventada nem placeholder. -->
-            <figure class="timeline-item__figure timeline-item__figure--joao" data-photo-slot="rotina" hidden>
-              <img alt="" width="1600" height="1067" loading="lazy" decoding="async">
-              <figcaption class="figure-caption"></figcaption>
-            </figure>
           </div>
+          <!-- Secundária: só tablet/desktop (mesmo truque do <source> de 2015). -->
+          <figure class="tl-photo tl-photo--doc tl-photo--no-mobile" data-reveal-media>
+            <picture>
+              <source media="(max-width: 767px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+              <img src="assets/images/timeline-hoje.webp" alt="João Teixeira ajustando a iluminação de um aquário com um poraquê" width="640" height="353" loading="lazy" decoding="async">
+            </picture>
+          </figure>
         </div>
       </li>
 
@@ -380,12 +410,12 @@
         </svg>
 
         <div class="ray__stat ray__stat--top">
-          <span class="ray__value" data-counter data-target="2" data-prefix="+">+2</span>
+          <span class="ray__value" data-counter data-target="3" data-prefix="+">+3</span>
           <span class="ray__unit">MILHÕES</span>
           <span class="ray__label">de seguidores somando todas as redes sociais</span>
         </div>
         <div class="ray__stat ray__stat--bottom">
-          <span class="ray__value" data-counter data-target="300" data-prefix="+">+300</span>
+          <span class="ray__value" data-counter data-target="500" data-prefix="+">+500</span>
           <span class="ray__unit">MILHÕES</span>
           <span class="ray__label">de visualizações</span>
         </div>

@@ -907,7 +907,8 @@ html.menu-open body{ overflow:hidden; }
 /* ==========================================================================
    TIMELINE ("Como tudo começou") — momento tipográfico principal do site.
    Cada entrada é uma row do grid de 12 colunas: ano (1–3) | conteúdo (4–12).
-   Sem fotografia, sem scroll horizontal, sem sticky, altura pelo conteúdo.
+   Uma foto real por marco (abaixo do texto), sem scroll horizontal, sem
+   sticky, altura pelo conteúdo.
    ========================================================================== */
 .timeline{ padding-block: var(--chapter-gap) var(--section-space-sm); }
 .timeline__intro{ padding-bottom: var(--space-lg); }
@@ -991,9 +992,126 @@ html.menu-open body{ overflow:hidden; }
   color: var(--gray-1);
 }
 
-/* Foto dentro de um marco (João em HOJE) */
-.timeline-item__figure{ margin-top: var(--space-md); max-width: 560px; }
-.timeline-item__figure img{ width:100%; height:auto; }
+/* --------------------------------------------------------------------------
+   FOTOGRAFIAS DA TIMELINE — um sistema, cinco tratamentos.
+   Cada .tl-photo é filha direta do grid do marco: no mobile cai abaixo do
+   texto; a partir de 1024px ocupa colunas próprias (ver bloco desktop).
+   O que é comum (fade por máscara, reveal, ausência de "card") fica aqui;
+   escala, posição e tipo de fade mudam por marco.
+
+     --record   2012  registro pequeno, sem borda, fade lateral + base
+     --strip    2015  faixa horizontal larga, nasce sob o "JF → MG"
+     --archive  2016  arquivo: passe-partout escuro, linha 1px, legenda
+     --cutout   2020  recorte sem fundo (João + pirarara) sobre o preto
+     --doc      HOJE  documental secundária, fade em todas as bordas
+   -------------------------------------------------------------------------- */
+.tl-photo{ position:relative; z-index:1; min-width:0; margin-top: var(--space-sm); }
+.tl-photo img{ width:100%; height:auto; }
+
+/* Fades: duas máscaras cruzadas (horizontal ∩ vertical). Cada tratamento
+   só define as quatro paradas; a técnica é uma só. */
+.tl-photo--record img,
+.tl-photo--strip img,
+.tl-photo--doc img{
+  --fx-l: 0%; --fx-r: 100%; --fy-t: 0%; --fy-b: 100%;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--fx-l), #000 var(--fx-r), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--fy-t), #000 var(--fy-b), transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right, transparent 0, #000 var(--fx-l), #000 var(--fx-r), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 var(--fy-t), #000 var(--fy-b), transparent 100%);
+          mask-composite: intersect;
+}
+
+/* 2012 — registro daquele primeiro momento: pequeno, levemente apagado */
+.tl-photo--record{ width: min(58%, 250px); }
+.tl-photo--record img{
+  --fx-l: 6%; --fx-r: 90%; --fy-t: 4%; --fy-b: 74%;
+  border-radius: 3px;
+  filter: saturate(.85);
+}
+
+/* 2015 — faixa editorial. O arquivo já vem cortado em 1280×545 (João,
+   vara e rio inteiros); o aspect-ratio só afina a altura no desktop. */
+.tl-photo--strip img{
+  --fx-l: 5%; --fx-r: 80%; --fy-t: 16%; --fy-b: 80%;
+  object-fit: cover; object-position: 30% 55%;
+}
+
+/* 2016 — arquivo: assume a cara de registro antigo, sem "modernizar" */
+.tl-photo--archive{
+  width: min(78%, 330px);
+  padding: 8px 8px 2px;
+  background: var(--black-soft);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+.tl-photo--archive img{ filter: saturate(.78) contrast(.96); border-radius: 1px; }
+.tl-photo--archive .figure-caption{ margin-top: .5rem; font-size: .66rem; }
+
+/* 2020 — recorte: João + pirarara flutuando sobre o preto. Brilho
+   vermelho mínimo atrás, sombra curta e fade só na base (onde a foto
+   original cortava as pernas). Sem caixa, sem radius. */
+.tl-photo--cutout{ width: min(100%, 440px); margin-inline: auto; }
+.tl-photo--cutout::before{
+  content:''; position:absolute; inset: 8% 4% 4%; z-index:-1;
+  background: radial-gradient(closest-side, rgba(215,25,32,.16), transparent 72%);
+  pointer-events:none;
+}
+.tl-photo--cutout img{
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,.55));
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
+          mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
+}
+
+/* HOJE — documental secundária */
+.tl-photo--doc img{ --fx-l: 10%; --fx-r: 90%; --fy-t: 8%; --fy-b: 78%; }
+
+/* Mobile: 2015 e HOJE saem (o <source> do <picture> já evita o download).
+   O marco, o texto e a data continuam; só a foto deixa de aparecer. */
+@media (max-width: 767px){
+  .tl-photo--no-mobile{ display:none; }
+}
+
+/* Tablet (ainda em pilha): a faixa ocupa a largura toda e sangra à direita */
+@media (min-width: 768px) and (max-width: 1023px){
+  .tl-photo--strip{ margin-right: calc(-1 * var(--gutter)); }
+  .tl-photo--strip img{ aspect-ratio: 2.4 / 1; }
+  .tl-photo--doc{ width: 52%; }
+}
+
+/* Reveal das fotos: suave e específico por tratamento. Sem JS, nada some. */
+.js [data-reveal-media]{
+  opacity: 0;
+  transform: var(--reveal-from, translateY(20px));
+  transition: opacity 1s var(--ease-out), transform 1.1s var(--ease-out);
+}
+.js [data-reveal-media].is-visible{ opacity:1; transform:none; }
+.tl-photo--strip{ --reveal-from: translateX(40px); }
+.tl-photo--cutout{ --reveal-from: translateX(28px) scale(.96); }
+
+/* Registro e arquivo: sem deslocar — uma "cortina" preta recolhe de cima
+   para baixo. NÃO usar clip-path na figura: um ancestral 100% recortado
+   faz o navegador considerar a <img loading=lazy> invisível, e ela nunca
+   chega a ser baixada. */
+.js .tl-photo--record[data-reveal-media],
+.js .tl-photo--archive[data-reveal-media]{ --reveal-from: none; }
+.js .tl-photo--record[data-reveal-media]::after,
+.js .tl-photo--archive[data-reveal-media]::after{
+  content:''; position:absolute; inset:-1px; z-index:2;
+  background: var(--black);
+  transform-origin: bottom;
+  transition: transform 1.1s var(--ease-out) .1s;
+  pointer-events:none;
+}
+.js .tl-photo--record[data-reveal-media].is-visible::after,
+.js .tl-photo--archive[data-reveal-media].is-visible::after{ transform: scaleY(0); }
+
+@media (prefers-reduced-motion: reduce){
+  .js [data-reveal-media]{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .js [data-reveal-media]::after{ display:none; }
+}
 
 /* 2016 — palavra-fantasma decorativa, contida pelo overflow:clip da row */
 .timeline-item__ghost{
@@ -1008,6 +1126,45 @@ html.menu-open body{ overflow:hidden; }
   .timeline-item__copy{ grid-column: 5 / 13; padding-top: .5rem; }
   .timeline__intro-heading{ grid-column: 1 / 7; }
   .timeline__intro-lead{ grid-column: 8 / 13; align-self:end; margin-top:0; }
+
+  /* ---- Composição de cada marco (mesmos gutters e coluna do ano) ---- */
+  .tl-photo{ margin-top:0; }
+
+  /* 2012: texto 5–9 · registro pequeno à direita, alinhado ao fim do texto */
+  .timeline-item--2012 .timeline-item__copy{ grid-column: 5 / 10; }
+  .tl-photo--record{
+    grid-column: 10 / 13; align-self:end; justify-self:end;
+    width: 100%; max-width: 300px;
+  }
+
+  /* 2015: a faixa atravessa o grid (col. 3 → borda) e nasce sob o JF → MG */
+  .timeline-item--2015 .timeline-item__copy{ z-index:2; }
+  .tl-photo--strip{
+    grid-column: 4 / -1;
+    margin-top: clamp(-3.5rem, -3.5vw, -2rem);
+    margin-right: calc(-1 * var(--gutter));
+    z-index:1;
+  }
+  .tl-photo--strip img{ aspect-ratio: 2.6 / 1; max-height: 400px; }
+
+  /* 2016: arquivo ao lado de BRASIL / JUMBOS., alinhado ao topo do título */
+  .timeline-item--2016 .timeline-item__copy{ grid-column: 5 / 9; }
+  .tl-photo--archive{
+    grid-column: 9 / 13; align-self:start; justify-self:end;
+    width: 100%; max-width: 320px; margin-top: .5rem;
+  }
+
+  /* 2020: texto 5–8 · João + peixe 8–borda; a cauda avança um pouco
+     sobre a calha central (desejado), nunca sobre o texto. */
+  .timeline-item--2020 .timeline-item__copy{ grid-column: 5 / 8; z-index:2; }
+  .tl-photo--cutout{
+    grid-column: 8 / -1; align-self:center;
+    width: 100%; max-width: 620px; margin: -1rem 0 -2rem auto;
+  }
+
+  /* HOJE: texto 5–9 · foto documental discreta 9–12 */
+  .timeline-item--today .timeline-item__copy{ grid-column: 5 / 9; }
+  .tl-photo--doc{ grid-column: 9 / 13; align-self:center; width:100%; max-width: 380px; justify-self:end; }
 }
 
 /* ==========================================================================
