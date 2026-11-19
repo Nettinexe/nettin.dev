@@ -165,13 +165,30 @@ async function tiktok() {
 
 const SOURCES = { instagram, youtube, facebook, tiktok };
 
+/** Redes com credencial presente agora (sem chamar API nenhuma). */
+function configuredNetworks() {
+  const has = {
+    instagram: env("INSTAGRAM_ACCESS_TOKEN"),
+    youtube: env("YOUTUBE_API_KEY"),
+    facebook: env("FACEBOOK_PAGE_ID") && env("FACEBOOK_PAGE_TOKEN"),
+    tiktok: env("TIKTOK_CLIENT_KEY") && env("TIKTOK_CLIENT_SECRET") && env("TIKTOK_REFRESH_TOKEN"),
+  };
+  return NETWORKS.filter((n) => has[n]).join(",");
+}
+
 /**
  * Resposta: { fetchedAt, counts: { instagram?, youtube?, facebook?, tiktok? } }
  * Só aparecem as redes com número real (da API agora ou do último cache).
+ *
+ * O cache só vale enquanto o conjunto de redes configuradas for o mesmo de
+ * quando ele foi gravado: ao adicionar uma credencial nova (ex.: a chave do
+ * YouTube) o número aparece no próximo acesso, sem esperar as 3 h.
  */
 export async function getCounts({ force = false } = {}) {
   const cached = await readJSON("counts");
-  if (!force && cached && Date.now() - cached.fetchedAt < COUNTS_TTL_MS) return cached;
+  const configured = configuredNetworks();
+  const fresh = cached && cached.configured === configured && Date.now() - cached.fetchedAt < COUNTS_TTL_MS;
+  if (!force && fresh) return cached;
 
   const previous = (cached && cached.counts) || {};
   const counts = {};
@@ -189,7 +206,7 @@ export async function getCounts({ force = false } = {}) {
     }
   });
 
-  const record = { fetchedAt: Date.now(), counts };
+  const record = { fetchedAt: Date.now(), configured, counts };
   await writeJSON("counts", record);
   return record;
 }
